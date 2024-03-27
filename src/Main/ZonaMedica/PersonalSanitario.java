@@ -1,4 +1,4 @@
-package Main;
+package Main.ZonaMedica;
 
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class PersonalSanitario extends PersonalHospital {
 
     @Override
     public String toString() {
-        return "Main.PersonalSanitario{" +
+        return "Main.ZonaMedica.PersonalSanitario{" +
                 "especialidad=" + especialidad +
                 ", turno=" + turno +
                 ", isActivo=" + isActivo +

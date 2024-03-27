@@ -1,4 +1,4 @@
-package Main;
+package Main.ZonaMedica;
 
 public enum ConsultasExternas {
     NO_ASIGNADO,
@@ -13,4 +13,5 @@ public enum ConsultasExternas {
     PSIQUIATRIA,
     TRAUMATOLOGIA,
     MEDICINA_GENERAL,
+    FISIOTERAPIA,
 }

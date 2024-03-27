@@ -1,7 +1,7 @@
 package Main.Pacientes;
 
 import java.util.ArrayList;
-import Main.Persona;
+import Main.ZonaMedica.Persona;
 public class Paciente extends Persona {
     //attribute
     protected boolean estaIngresado;

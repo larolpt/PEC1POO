@@ -1,4 +1,4 @@
-package Main;
+package Main.ZonaMedica;
 
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class Estudiante extends Persona{
 
     @Override
     public String toString() {
-        return "Main.Estudiante{" +
+        return "Main.ZonaMedica.Estudiante{" +
                 "sanitarioAsignado=" + sanitarioAsignado +
                 ", nombreUniversidad='" + nombreUniversidad + '\'' +
                 ", nombre='" + nombre + '\'' +

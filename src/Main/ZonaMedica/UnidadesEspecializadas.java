@@ -1,4 +1,4 @@
-package Main;
+package Main.ZonaMedica;
 
 public enum UnidadesEspecializadas {
     NO_NECESARIA,

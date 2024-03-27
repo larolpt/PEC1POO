@@ -1,4 +1,4 @@
-package Main;
+package Main.ZonaMedica;
 
 import java.util.Date;
 
@@ -91,7 +91,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Main.Persona{" +
+        return "Main.ZonaMedica.Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +
                 ", segundoApellido='" + segundoApellido + '\'' +

@@ -1,7 +1,9 @@
+package Main.Pacientes;
+
 import java.sql.Time;
 import java.util.Date;
 
-public class CitaPrueba extends Cita{
+public class CitaPrueba extends Cita {
     //attribute
     protected TipoPruebas prueba;
 
@@ -29,7 +31,7 @@ public class CitaPrueba extends Cita{
 
     @Override
     public String toString() {
-        return "CitaPrueba{" +
+        return "Main.Pacientes.CitaPrueba{" +
                 "prueba=" + prueba +
                 ", dia=" + dia +
                 ", hora=" + hora +

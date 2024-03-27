@@ -1,8 +1,11 @@
-import javax.xml.stream.events.ProcessingInstruction;
+package Main.Pacientes;
+
 import java.sql.Time;
 import java.util.Date;
+import Main.PersonalSanitario;
+import Main.UnidadesEspecializadas;
 
-public class CitaMedico extends Cita{
+public class CitaMedico extends Cita {
     //attribute
     /**
      Si el tipo == true cita presencial
@@ -37,7 +40,7 @@ public class CitaMedico extends Cita{
 
     @Override
     public String toString() {
-        return "CitaMedico{" +
+        return "Main.Pacientes.CitaMedico{" +
                 "tipo=" + tipo +
                 ", medicoAsignado=" + medicoAsignado +
                 ", unidad=" + unidad +

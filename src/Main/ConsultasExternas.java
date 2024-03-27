@@ -1,3 +1,5 @@
+package Main;
+
 public enum ConsultasExternas {
     NO_ASIGNADO,
     ENFERMERIA,

@@ -1,3 +1,5 @@
+package Main;
+
 import java.util.Date;
 
 public class PersonalHospital extends Persona{
@@ -26,7 +28,7 @@ public class PersonalHospital extends Persona{
 
     @Override
     public String toString() {
-        return "PersonalHospital{" +
+        return "Main.PersonalHospital{" +
                 "isActivo=" + isActivo +
                 ", nombre='" + nombre + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +

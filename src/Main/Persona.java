@@ -1,7 +1,8 @@
+package Main;
+
 import java.util.Date;
 
 public class Persona {
-
     //attribute
     protected String nombre;
     protected String primerApellido;
@@ -90,7 +91,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
+        return "Main.Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +
                 ", segundoApellido='" + segundoApellido + '\'' +

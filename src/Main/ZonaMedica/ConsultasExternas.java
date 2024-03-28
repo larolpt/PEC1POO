@@ -1,17 +1,54 @@
 package Main.ZonaMedica;
 
+
 public enum ConsultasExternas {
-    NO_ASIGNADO,
-    ENFERMERIA,
-    APARATO_DIGESTIVO,
-    CARDIOLOGIA,
-    CIRUGIA_GENERAL,
-    DERMATOLOGIA,
-    MEDICINA_INTERNA,
-    ONCOLOGIA,
-    OFTALMOLOGIA,
-    PSIQUIATRIA,
-    TRAUMATOLOGIA,
-    MEDICINA_GENERAL,
-    FISIOTERAPIA,
+    NO_ASIGNADO(0),
+    BENFERMERIA(1),
+    APARATO_DIGESTIVO(2),
+    CARDIOLOGIA(3),
+    CIRUGIA_GENERAL(4),
+    DERMATOLOGIA(5),
+    MEDICINA_INTERNA(6),
+    ONCOLOGIA(7),
+    OFTALMOLOGIA(8),
+    PSIQUIATRIA(9),
+    TRAUMATOLOGIA(10),
+    MEDICINA_GENERAL(11),
+    FISIOTERAPIA(12);
+
+    private final int numAsignado;
+
+    ConsultasExternas(int numAsignado) {
+        this.numAsignado = numAsignado;
+    }
+
+    public int getNumero(){
+        return numAsignado;
+    }
+
+    public static void mostrarConsultasExternas(){
+        int cont = 0;
+        System.out.print("Titulo");
+        for (ConsultasExternas enumItem : ConsultasExternas.values()) {
+            if(cont%2 == 0){
+                System.out.print("\n");
+            }
+            System.out.print(enumItem.getNumero() + ".-" + enumItem + "\t");
+            cont++;
+        }
+        System.out.print("\nFin");
+    }
+
+    public static ConsultasExternas AsignarConsultaExterna(int numConsulta){
+        for (ConsultasExternas consulta : ConsultasExternas.values()) {
+            if (consulta.getNumero() == numConsulta) {
+                return consulta;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró ninguna consulta con ese numero: " + numConsulta);
+    }
+    public static void main(String[] args) {
+        mostrarConsultasExternas();
+    }
 }
+

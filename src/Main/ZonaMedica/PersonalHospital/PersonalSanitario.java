@@ -1,4 +1,4 @@
-package Main.ZonaMedica;
+package Main.ZonaMedica.PersonalHospital;
 
 import java.util.Date;
 
@@ -15,6 +15,12 @@ public class PersonalSanitario extends PersonalHospital {
 
     public PersonalSanitario(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, boolean isActivo, ConsultasExternas especialidad, Turno turno) {
         super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, isActivo);
+        this.especialidad = especialidad;
+        this.turno = turno;
+    }
+
+    public PersonalSanitario(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, ConsultasExternas especialidad, Turno turno) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia);
         this.especialidad = especialidad;
         this.turno = turno;
     }
@@ -38,7 +44,7 @@ public class PersonalSanitario extends PersonalHospital {
 
     @Override
     public String toString() {
-        return "Main.ZonaMedica.PersonalSanitario{" +
+        return "Main.ZonaMedica.PersonalHospital.PersonalSanitario{" +
                 "especialidad=" + especialidad +
                 ", turno=" + turno +
                 ", isActivo=" + isActivo +

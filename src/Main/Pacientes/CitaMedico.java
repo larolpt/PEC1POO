@@ -2,8 +2,8 @@ package Main.Pacientes;
 
 import java.sql.Time;
 import java.util.Date;
-import Main.ZonaMedica.PersonalSanitario;
-import Main.ZonaMedica.UnidadesEspecializadas;
+import Main.ZonaMedica.PersonalHospital.PersonalSanitario;
+import Main.ZonaMedica.PersonalHospital.UnidadesEspecializadas;
 
 public class CitaMedico extends Cita {
     //attribute

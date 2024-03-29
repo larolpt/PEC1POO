@@ -1,8 +1,10 @@
-package Main.ZonaMedica;
+package Main.ZonaMedica.PersonalHospital;
+
+import Main.ZonaMedica.Persona;
 
 import java.util.Date;
 
-public class PersonalHospital extends Persona{
+public class PersonalHospital extends Persona {
     //attribute
     protected boolean isActivo;
 
@@ -16,6 +18,10 @@ public class PersonalHospital extends Persona{
         super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia);
         this.isActivo = isActivo;
     }
+    public PersonalHospital(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia);
+        this.isActivo = true;
+    }
 
     //getters and setter
     public boolean isActivo() {
@@ -28,7 +34,7 @@ public class PersonalHospital extends Persona{
 
     @Override
     public String toString() {
-        return "Main.ZonaMedica.PersonalHospital{" +
+        return "Main.ZonaMedica.PersonalHospital.PersonalHospital{" +
                 "isActivo=" + isActivo +
                 ", nombre='" + nombre + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +

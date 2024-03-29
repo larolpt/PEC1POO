@@ -1,9 +1,9 @@
-package Main.ZonaMedica;
+package Main.ZonaMedica.PersonalHospital;
 
 
 public enum ConsultasExternas {
     NO_ASIGNADO(0),
-    BENFERMERIA(1),
+    ENFERMERIA(1),
     APARATO_DIGESTIVO(2),
     CARDIOLOGIA(3),
     CIRUGIA_GENERAL(4),
@@ -39,7 +39,7 @@ public enum ConsultasExternas {
         System.out.print("\nFin");
     }
 
-    public static ConsultasExternas AsignarConsultaExterna(int numConsulta){
+    public static ConsultasExternas asignarConsultaExterna(int numConsulta){
         for (ConsultasExternas consulta : ConsultasExternas.values()) {
             if (consulta.getNumero() == numConsulta) {
                 return consulta;
@@ -49,6 +49,7 @@ public enum ConsultasExternas {
     }
     public static void main(String[] args) {
         mostrarConsultasExternas();
+        System.out.print(asignarConsultaExterna(1));
     }
 }
 

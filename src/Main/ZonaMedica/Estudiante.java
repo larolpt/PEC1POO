@@ -1,5 +1,7 @@
 package Main.ZonaMedica;
 
+import Main.ZonaMedica.PersonalHospital.PersonalSanitario;
+
 import java.util.Date;
 
 public class Estudiante extends Persona{

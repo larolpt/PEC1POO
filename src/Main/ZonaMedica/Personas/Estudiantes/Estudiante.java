@@ -1,7 +1,7 @@
-package Main.ZonaMedica.Estudiantes;
+package Main.ZonaMedica.Personas.Estudiantes;
 
-import Main.ZonaMedica.Persona;
-import Main.ZonaMedica.PersonalSanitario.PersonalSanitario;
+import Main.ZonaMedica.Personas.Persona;
+import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +51,7 @@ public class Estudiante extends Persona {
     }
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Estudiantes.Estudiante{" +
+        return "Main.ZonaMedica.Persona.Estudiantes.Estudiante{" +
                 "sanitarioAsignado=" + sanitarioAsignado +
                 ", nombreUniversidad='" + nombreUniversidad + '\'' +
                 ", nombre='" + nombre + '\'' +

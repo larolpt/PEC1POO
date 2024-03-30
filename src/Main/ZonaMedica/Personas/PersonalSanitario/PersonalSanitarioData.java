@@ -1,4 +1,4 @@
-package Main.ZonaMedica.PersonalSanitario;
+package Main.ZonaMedica.Personas.PersonalSanitario;
 
 import java.util.ArrayList;
 import java.util.Date;

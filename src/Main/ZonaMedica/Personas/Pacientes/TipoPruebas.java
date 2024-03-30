@@ -1,4 +1,4 @@
-package Main.ZonaMedica.Pacientes;
+package Main.ZonaMedica.Personas.Pacientes;
 
 public enum TipoPruebas {
     ANALITICAS,

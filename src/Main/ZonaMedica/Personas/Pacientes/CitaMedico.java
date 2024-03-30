@@ -1,8 +1,8 @@
-package Main.ZonaMedica.Pacientes;
+package Main.ZonaMedica.Personas.Pacientes;
 
 import java.sql.Time;
 import java.util.Date;
-import Main.ZonaMedica.PersonalSanitario.PersonalSanitario;
+import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 import Main.ZonaMedica.UnidadesEspecializadas;
 
 public class CitaMedico extends Cita {
@@ -40,7 +40,7 @@ public class CitaMedico extends Cita {
 
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Pacientes.CitaMedico{" +
+        return "Main.ZonaMedica.Persona.Pacientes.CitaMedico{" +
                 "tipo=" + tipo +
                 ", medicoAsignado=" + medicoAsignado +
                 ", unidad=" + unidad +

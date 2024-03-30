@@ -1,11 +1,11 @@
-package Main.ZonaMedica.PersonalSanitario;
+package Main.ZonaMedica.Personas.PersonalSanitario;
 
-import Main.ZonaMedica.PersonalHospital;
+import Main.ZonaMedica.Personas.PersonalHospital;
 
 import java.util.Date;
 import java.util.Scanner;
 
-import static Main.ZonaMedica.PersonalSanitario.PersonalSanitarioController.*;
+import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController.*;
 
 public class PersonalSanitario extends PersonalHospital {
     //attribute
@@ -45,59 +45,9 @@ public class PersonalSanitario extends PersonalHospital {
     public void setTurno(Turno turno) {
         this.turno = turno;
     }
-
-    public void modificarDatos(){
-        int opcion;
-        Scanner input = new Scanner(System.in);
-        // Menú para elegir qué atributo del usuario modificar
-        do {
-            mostrarAtributos();
-            opcion = input.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    this.setNombre(inputNombre());
-                    break;
-                case 2:
-                    this.setPrimerApellido(inputApellido1());
-                    break;
-                case 3:
-                    this.setSegundoApellido(inputApellido2());
-                    break;
-                case 4:
-                    this.setDni(inputDNI());
-                    break;
-                case 5:
-                    this.setfNacimiento(inputFechaNacimiento());
-                    break;
-                case 6:
-                    this.setCodigoPostal(inputCodigoPostal());
-                    break;
-                case 7:
-                    this.setLugarResidencia(inputResidencia());
-                    break;
-                case 8:
-                    this.setActivo(inputActivo());
-                    break;
-                case 9:
-                    this.setEspecialidad(inputConsultaExterna());
-                    break;
-                case 10:
-                    this.setTurno(inputTurno());
-                    break;
-                case 0:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    break;
-            }
-        } while (opcion != 0);
-    }
-
     @Override
     public String toString() {
-        return "Main.ZonaMedica.PersonalHospital.PersonalSanitario{" +
+        return "Main.ZonaMedica.Persona.PersonalHospital.PersonalSanitario{" +
                 "especialidad=" + especialidad +
                 ", turno=" + turno +
                 ", isActivo=" + isActivo +

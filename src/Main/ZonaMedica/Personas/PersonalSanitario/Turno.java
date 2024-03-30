@@ -1,4 +1,4 @@
-package Main.ZonaMedica.PersonalSanitario;
+package Main.ZonaMedica.Personas.PersonalSanitario;
 
 public enum Turno {
     NO_ASIGNADO(0),

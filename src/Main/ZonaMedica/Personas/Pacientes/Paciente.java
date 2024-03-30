@@ -1,9 +1,9 @@
-package Main.ZonaMedica.Pacientes;
+package Main.ZonaMedica.Personas.Pacientes;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import Main.ZonaMedica.Persona;
+import Main.ZonaMedica.Personas.Persona;
 public class Paciente extends Persona {
     //attribute
     protected boolean estaIngresado;

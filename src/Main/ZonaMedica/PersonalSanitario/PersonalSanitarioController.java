@@ -2,40 +2,53 @@ package Main.ZonaMedica.PersonalSanitario;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.PersonalSanitario.ConsultasExternas.*;
 import static Main.ZonaMedica.PersonalSanitario.Turno.*;
-
 public class PersonalSanitarioController {
     private static Scanner input = new Scanner(System.in);
-    public static void darAlta(){
-        //Llamada a los metodos para crear un nuevo trabajador
-        PersonalSanitario medico = new PersonalSanitario(
-                inputNombre(),
-                inputApellido1(),
-                inputApellido2(),
-                inputDNI(),
-                inputFechaNacimiento(),
-                inputCodigoPostal(),
-                inputResidencia(),
-                inputActivo(),
-                inputConsultaExterna(),
-                inputTurno());
+    public static void darAltaPersonal(ArrayList<PersonalSanitario> data){
+        //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
+        data.add(new PersonalSanitario(
+                        inputNombre(),
+                        inputApellido1(),
+                        inputApellido2(),
+                        inputDNI(),
+                        inputFechaNacimiento(),
+                        inputCodigoPostal(),
+                        inputResidencia(),
+                        inputActivo(),
+                        inputConsultaExterna(),
+                        inputTurno())
+        );
+    }
+    public static void eliminarPersonal(ArrayList<PersonalSanitario> data){
+        int registro = 0;
+            try{
+                System.out.print("Indique el número del registro del personal que quiera borrar: ");
+                registro = input.nextInt();
+                input.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Error: Introduzca un valor numerico solo. ");
+                eliminarPersonal(data);
+            }
+        data.remove(registro);
     }
     public static void mostrarAtributos(){
         System.out.println("Seleccione el atributo a modificar:");
-        System.out.println("----------------------------------------------- ");
-        System.out.println("| 1. Nombre              | | 2. Apellido1     | ");
-        System.out.println("| 3. Apellido2           | | 4. DNI           | ");
-        System.out.println("| 5. Fecha de Nacimiento | | 6. Código Postal | ");
-        System.out.println("| 7. Residencia          | | 8. Activo        | ");
-        System.out.println("| 9. Consulta Externa    | | 10. Turno        | ");
-        System.out.println("| 0. Salir               | |                  | ");
-        System.out.println("----------------------------------------------- ");
-        System.out.print("Opción: ");
+        System.out.println("---------------------------------------------------");
+        System.out.println(" | 1. Nombre              | | 2. Primer apellido | ");
+        System.out.println(" | 3. Segundo apellido    | | 4. DNI             | ");
+        System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
+        System.out.println(" | 7. Residencia          | | 8. Activo          | ");
+        System.out.println(" | 9. Consulta Externa    | | 10. Turno          | ");
+        System.out.println(" | 0. Salir               | |                    | ");
+        System.out.println("---------------------------------------------------");
+        System.out.print(" Opción: ");
     }
     public static String inputNombre(){
         System.out.print("Introduce el nombre: ");
@@ -146,7 +159,6 @@ public class PersonalSanitarioController {
                 isValidInput = false;
             }
         } while (!isValidInput);
-
         return isActive;
     }
     public static Turno inputTurno(){
@@ -170,10 +182,6 @@ public class PersonalSanitarioController {
                 input.nextLine(); // Limpiar el buffer del scanner
             }
         } while (!isValid);
-
         return turno;
-    }
-    public static void main(String[] args) {
-        inputFechaNacimiento();
     }
 }

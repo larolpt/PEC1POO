@@ -17,7 +17,6 @@ public class PersonalSanitario extends PersonalHospital {
         this.especialidad = ConsultasExternas.NO_ASIGNADO;
         this.turno = Turno.NO_ASIGNADO;
     }
-
     public PersonalSanitario(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, boolean isActivo, ConsultasExternas especialidad, Turno turno) {
         super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, isActivo);
         this.especialidad = especialidad;

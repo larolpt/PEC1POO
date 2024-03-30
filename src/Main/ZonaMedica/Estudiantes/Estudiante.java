@@ -1,14 +1,17 @@
-package Main.ZonaMedica;
+package Main.ZonaMedica.Estudiantes;
 
+import Main.ZonaMedica.Persona;
 import Main.ZonaMedica.PersonalSanitario.PersonalSanitario;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public class Estudiante extends Persona{
+public class Estudiante extends Persona {
     //attribute
     protected PersonalSanitario sanitarioAsignado;
     protected String nombreUniversidad;
-
     //builder
     public Estudiante(PersonalSanitario sanitarioAsignado, String nombreUniversidad) {
         this.sanitarioAsignado = null;
@@ -20,27 +23,35 @@ public class Estudiante extends Persona{
         this.sanitarioAsignado = sanitarioAsignado;
         this.nombreUniversidad = nombreUniversidad;
     }
-
     //getters and setters
     public PersonalSanitario getSanitarioAsignado() {
         return sanitarioAsignado;
     }
-
     public void setSanitarioAsignado(PersonalSanitario sanitarioAsignado) {
         this.sanitarioAsignado = sanitarioAsignado;
     }
-
     public String getNombreUniversidad() {
         return nombreUniversidad;
     }
-
     public void setNombreUniversidad(String nombreUniversidad) {
         this.nombreUniversidad = nombreUniversidad;
     }
-
+    public void asignarSanitario(ArrayList<PersonalSanitario> data){
+        Scanner input = new Scanner(System.in);
+        int registro = 0;
+        try{
+            System.out.print("Introduce el número del sanitario que tendra" + nombre + primerApellido + "asignado: ");
+            registro = input.nextInt();
+            input.nextLine();
+        }catch (InputMismatchException e){
+            System.out.println("Error: Introduzca un valor numerico solo. ");
+            asignarSanitario(data);
+        }
+        this.setSanitarioAsignado(data.get(registro));
+    }
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Estudiante{" +
+        return "Main.ZonaMedica.Estudiantes.Estudiante{" +
                 "sanitarioAsignado=" + sanitarioAsignado +
                 ", nombreUniversidad='" + nombreUniversidad + '\'' +
                 ", nombre='" + nombre + '\'' +

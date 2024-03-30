@@ -1,4 +1,4 @@
-package Main.Pacientes;
+package Main.ZonaMedica.Pacientes;
 
 import java.sql.Time;
 import java.util.Date;
@@ -31,7 +31,7 @@ public class CitaPrueba extends Cita {
 
     @Override
     public String toString() {
-        return "Main.Pacientes.CitaPrueba{" +
+        return "Main.ZonaMedica.Pacientes.CitaPrueba{" +
                 "prueba=" + prueba +
                 ", dia=" + dia +
                 ", hora=" + hora +

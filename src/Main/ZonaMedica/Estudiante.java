@@ -1,6 +1,6 @@
 package Main.ZonaMedica;
 
-import Main.ZonaMedica.PersonalHospital.PersonalSanitario;
+import Main.ZonaMedica.PersonalSanitario.PersonalSanitario;
 
 import java.util.Date;
 

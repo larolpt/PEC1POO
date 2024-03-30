@@ -1,4 +1,4 @@
-package Main.ZonaMedica.PersonalHospital;
+package Main.ZonaMedica.PersonalSanitario;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Main.ZonaMedica.PersonalHospital.ConsultasExternas.*;
-import static Main.ZonaMedica.PersonalHospital.Turno.*;
+import static Main.ZonaMedica.PersonalSanitario.ConsultasExternas.*;
+import static Main.ZonaMedica.PersonalSanitario.Turno.*;
 
-public class EmpleadosController {
+public class PersonalSanitarioController {
     private static Scanner input = new Scanner(System.in);
     public static void darAlta(){
         //Llamada a los metodos para crear un nuevo trabajador
@@ -25,64 +25,17 @@ public class EmpleadosController {
                 inputConsultaExterna(),
                 inputTurno());
     }
-    public static void modificarDatos(PersonalSanitario medico){
-        int opcion;
-        // Menú para elegir qué atributo del usuario modificar
-        do {
-            System.out.println("Seleccione el atributo a modificar:");
-            System.out.println("1. Nombre");
-            System.out.println("2. Apellido1");
-            System.out.println("3. Apellido2");
-            System.out.println("4. DNI");
-            System.out.println("5. Fecha de Nacimiento");
-            System.out.println("6. Código Postal");
-            System.out.println("7. Residencia");
-            System.out.println("8. Activo");
-            System.out.println("9. Consulta Externa");
-            System.out.println("10. Turno");
-            System.out.println("0. Salir");
-            System.out.print("Opción: ");
-            opcion = input.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    medico.setNombre(inputNombre());
-                    break;
-                case 2:
-                    medico.setPrimerApellido(inputApellido1());
-                    break;
-                case 3:
-                    medico.setSegundoApellido(inputApellido2());
-                    break;
-                case 4:
-                    medico.setDni(inputDNI());
-                    break;
-                case 5:
-                    medico.setfNacimiento(inputFechaNacimiento());
-                    break;
-                case 6:
-                    medico.setCodigoPostal(inputCodigoPostal());
-                    break;
-                case 7:
-                    medico.setLugarResidencia(inputResidencia());
-                    break;
-                case 8:
-                    medico.setActivo(inputActivo());
-                    break;
-                case 9:
-                    medico.setEspecialidad(inputConsultaExterna());
-                    break;
-                case 10:
-                    medico.setTurno(inputTurno());
-                    break;
-                case 0:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    break;
-            }
-        } while (opcion != 0);
+    public static void mostrarAtributos(){
+        System.out.println("Seleccione el atributo a modificar:");
+        System.out.println("----------------------------------------------- ");
+        System.out.println("| 1. Nombre              | | 2. Apellido1     | ");
+        System.out.println("| 3. Apellido2           | | 4. DNI           | ");
+        System.out.println("| 5. Fecha de Nacimiento | | 6. Código Postal | ");
+        System.out.println("| 7. Residencia          | | 8. Activo        | ");
+        System.out.println("| 9. Consulta Externa    | | 10. Turno        | ");
+        System.out.println("| 0. Salir               | |                  | ");
+        System.out.println("----------------------------------------------- ");
+        System.out.print("Opción: ");
     }
     public static String inputNombre(){
         System.out.print("Introduce el nombre: ");
@@ -152,15 +105,27 @@ public class EmpleadosController {
     }
     public static Date inputFechaNacimiento(){
         String fecha;
+        int mes, dia;
         Date fechaNacimiento = null;
         System.out.print("Introduce la fecha de nacimiento en formato dd/MM/yyyy: ");
-        fecha = input.next().trim();
+        fecha = input.nextLine().trim();
 
         try {
             fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+            String[] partes = fecha.split("/");
+            dia = Integer.parseInt(partes[0]);
+            mes = Integer.parseInt(partes[1]);
+
+            if (dia < 1 || dia > 31 || mes < 1 || mes > 12) {
+                throw new IllegalArgumentException("Fecha inválida");
+            }
         } catch (ParseException e) {
             // Manejar una excepción si la entrada no está en el formato esperado
             System.out.println("Error: La fecha ingresada no está en el formato dd/MM/yyyy.");
+            inputFechaNacimiento();
+        }catch (IllegalArgumentException e ){
+            // Manejar si la fecha introducida es correcta
+            System.out.println("Error: La fecha ingresada no es correcta.");
             inputFechaNacimiento();
         }
         return fechaNacimiento;
@@ -209,6 +174,6 @@ public class EmpleadosController {
         return turno;
     }
     public static void main(String[] args) {
-
+        inputFechaNacimiento();
     }
 }

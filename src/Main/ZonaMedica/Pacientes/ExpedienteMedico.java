@@ -1,4 +1,4 @@
-package Main.Pacientes;
+package Main.ZonaMedica.Pacientes;
 
 import java.util.Date;
 

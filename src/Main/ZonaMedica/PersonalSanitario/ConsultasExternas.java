@@ -1,4 +1,4 @@
-package Main.ZonaMedica.PersonalHospital;
+package Main.ZonaMedica.PersonalSanitario;
 
 
 public enum ConsultasExternas {

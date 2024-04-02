@@ -89,6 +89,10 @@ public class Persona {
         return lugarResidencia;
     }
 
+    public String getNombreCompleto(){
+        return this.getNombre() + " " + this.getPrimerApellido() + " " + this.getSegundoApellido();
+    }
+
     @Override
     public String toString() {
         return "Main.ZonaMedica.Persona.Persona{" +

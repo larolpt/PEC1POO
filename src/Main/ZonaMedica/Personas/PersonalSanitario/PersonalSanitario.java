@@ -48,16 +48,13 @@ public class PersonalSanitario extends PersonalHospital {
     @Override
     public String toString() {
         return "Main.ZonaMedica.Persona.PersonalHospital.PersonalSanitario{" +
-                "especialidad=" + especialidad +
-                ", turno=" + turno +
-                ", isActivo=" + isActivo +
-                ", nombre='" + nombre + '\'' +
-                ", primerApellido='" + primerApellido + '\'' +
-                ", segundoApellido='" + segundoApellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fNacimiento=" + fNacimiento +
-                ", codigoPostal=" + codigoPostal +
-                ", lugarResidencia='" + lugarResidencia + '\'' +
+                "especialidad=" + especialidad + '\n' +
+                ", turno=" + turno + '\n' +
+                ", isActivo=" + isActivo + '\n' +
+                ", nombre='" + nombre + '\n' +
+                ", primerApellido='" + primerApellido + '\n' +
+                ", segundoApellido='" + segundoApellido + '\n' +
+                ", dni='" + dni + '\n' +
                 '}';
     }
 }

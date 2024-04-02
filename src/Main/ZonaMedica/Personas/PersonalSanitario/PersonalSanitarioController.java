@@ -7,12 +7,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas.*;
+import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.Turno.*;
 public class PersonalSanitarioController extends PersonaController {
     private static Scanner input = new Scanner(System.in);
-    public static void darAltaPersonal(ArrayList<PersonalSanitario> data){
+    public static void darAltaPersonal(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
-        data.add(new PersonalSanitario(
+        dataPersonalSanitario.add(new PersonalSanitario(
                         inputNombre(),
                         inputApellido1(),
                         inputApellido2(),
@@ -25,7 +26,7 @@ public class PersonalSanitarioController extends PersonaController {
                         inputTurno())
         );
     }
-    public void modificarDatosPersonalSanitario(ArrayList<PersonalSanitario> data){
+    public static void modificarDatosPersonalSanitario(){
         int opcion, registro = 0;
         try{
             System.out.print("Indique el número del registro del personal que quiera borrar: ");
@@ -33,10 +34,10 @@ public class PersonalSanitarioController extends PersonaController {
             input.nextLine();
         }catch (InputMismatchException e){
             System.out.println("Error: Introduzca un valor numerico solo. ");
-            modificarDatosPersonalSanitario(data);
+            modificarDatosPersonalSanitario();
         }
-        PersonalSanitario personal = data.get(registro);
         // Menú para elegir qué atributo del usuario modificar
+        PersonalSanitario personal = dataPersonalSanitario.get(registro);
         do {
             mostrarAtributos();
             opcion = input.nextInt();
@@ -64,7 +65,7 @@ public class PersonalSanitarioController extends PersonaController {
                     personal.setLugarResidencia(inputResidencia());
                     break;
                 case 8:
-                    personal.setActivo(inputActivo());
+                    personal.setIsActivo(inputActivo());
                     break;
                 case 9:
                     personal.setEspecialidad(inputConsultaExterna());
@@ -81,7 +82,7 @@ public class PersonalSanitarioController extends PersonaController {
             }
         } while (opcion != 0);
     }
-    public static void eliminarPersonalSanitario(ArrayList<PersonalSanitario> data){
+    public static void eliminarPersonalSanitario(){
         int registro = 0;
             try{
                 System.out.print("Indique el número del registro del personal que quiera borrar: ");
@@ -89,9 +90,16 @@ public class PersonalSanitarioController extends PersonaController {
                 input.nextLine();
             }catch (InputMismatchException e){
                 System.out.println("Error: Introduzca un valor numerico solo. ");
-                eliminarPersonalSanitario(data);
+                eliminarPersonalSanitario();
             }
-        data.remove(registro);
+        dataPersonalSanitario.remove(registro);
+    }
+    public static void mostrarPersonal(){
+        for(int i=0; i < dataPersonalSanitario.size(); i+=2) {
+            System.out.print(dataPersonalSanitario.get(i));
+            System.out.print(dataPersonalSanitario.get(i += 1));
+            System.out.println(" ");
+        }
     }
     public static void mostrarAtributos(){
         System.out.println("Seleccione el atributo a modificar:");

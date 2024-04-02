@@ -1,4 +1,4 @@
-package Main.ZonaMedica.Personas.Pacientes;
+package Main.ZonaMedica.Personas.Pacientes.Citas;
 
 import java.sql.Time;
 import java.util.Date;

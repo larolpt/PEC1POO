@@ -3,6 +3,7 @@ package Main.ZonaMedica.Personas.Pacientes;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
 import Main.ZonaMedica.Personas.Persona;
 public class Paciente extends Persona {
     //attribute

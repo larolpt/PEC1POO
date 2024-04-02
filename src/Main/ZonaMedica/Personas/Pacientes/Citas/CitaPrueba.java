@@ -1,4 +1,6 @@
-package Main.ZonaMedica.Personas.Pacientes;
+package Main.ZonaMedica.Personas.Pacientes.Citas;
+
+import Main.ZonaMedica.Personas.Pacientes.TipoPruebas;
 
 import java.sql.Time;
 import java.util.Date;

@@ -22,11 +22,11 @@ public class PersonalHospital extends Persona {
     }
 
     //getters and setter
-    public boolean isActivo() {
+    public boolean getIsActivo() {
         return isActivo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setIsActivo(boolean activo) {
         isActivo = activo;
     }
 

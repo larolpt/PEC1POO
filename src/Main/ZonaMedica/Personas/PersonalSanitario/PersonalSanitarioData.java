@@ -11,16 +11,20 @@ public class PersonalSanitarioData {
         mostrarPersonal();
     }
     public static void mostrarPersonal(){
-
+        int cont, cont2;
         System.out.println(String.format("%1$-79s","-").replace(" ", "-"));
-        for(int i=0; i < dataPersonalSanitario.size(); i+=2) {
+        for(int i=0; i < dataPersonalSanitario.size()-1; i+=2) {
+            cont = i+1;
+            cont2 = i+2;
             System.out.println(
-                    "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(i).getNombreCompleto()) +
-                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(i++).getNombreCompleto()) + " |\n" +
+                    "| " +  String.format("%1$-36s", cont+".-") +
+                            "| " + String.format("%1$-36s", cont2+".-") + " |\n" +
+                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(i).getNombreCompleto()) +
+                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(cont).getNombreCompleto()) + " |\n" +
                             "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(i).getEspecialidad()) +
-                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(i++).getEspecialidad()) + " |\n" +
+                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(cont).getEspecialidad()) + " |\n" +
                             "| Esta Activo: " + String.format("%1$-23s", dataPersonalSanitario.get(i).getIsActivo() ? "Sí" : "No") +
-                            "| Esta Activo: " + String.format("%1$-23s", dataPersonalSanitario.get(i++).getIsActivo() ? "Sí" : "No") + " |"
+                            "| Esta Activo: " + String.format("%1$-23s", dataPersonalSanitario.get(cont).getIsActivo() ? "Sí" : "No") + " |"
                     );
             System.out.println(String.format("%1$-79s","-").replace(" ", "-"));
         }

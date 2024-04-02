@@ -36,19 +36,6 @@ public class Estudiante extends Persona {
     public void setNombreUniversidad(String nombreUniversidad) {
         this.nombreUniversidad = nombreUniversidad;
     }
-    public void asignarSanitario(ArrayList<PersonalSanitario> data){
-        Scanner input = new Scanner(System.in);
-        int registro = 0;
-        try{
-            System.out.print("Introduce el número del sanitario que tendra" + nombre + primerApellido + "asignado: ");
-            registro = input.nextInt();
-            input.nextLine();
-        }catch (InputMismatchException e){
-            System.out.println("Error: Introduzca un valor numerico solo. ");
-            asignarSanitario(data);
-        }
-        this.setSanitarioAsignado(data.get(registro));
-    }
     @Override
     public String toString() {
         return "Main.ZonaMedica.Persona.Estudiantes.Estudiante{" +

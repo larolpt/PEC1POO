@@ -3,7 +3,7 @@ package Main.ZonaMedica.Personas.Pacientes.Citas;
 import java.sql.Time;
 import java.util.Date;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
-import Main.ZonaMedica.UnidadesEspecializadas;
+import Main.ZonaMedica.Personas.PersonalSanitario.UnidadesEspecializadas;
 
 public class CitaMedico extends Cita {
     //attribute

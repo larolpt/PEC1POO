@@ -13,8 +13,8 @@ public class Paciente extends Persona {
     protected ArrayList<ExpedienteMedico> historialMedico;
 
     //builder
-    public Paciente(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, boolean estaIngresado, boolean tieneSeguro, ArrayList<Cita> citas, ArrayList<ExpedienteMedico> historialMedico) {
-        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia);
+    public Paciente(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono, boolean estaIngresado, boolean tieneSeguro, ArrayList<Cita> citas, ArrayList<ExpedienteMedico> historialMedico) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
         this.estaIngresado = estaIngresado;
         this.tieneSeguro = tieneSeguro;
         this.citas = citas;
@@ -68,6 +68,7 @@ public class Paciente extends Persona {
                 ", fNacimiento=" + fNacimiento +
                 ", codigoPostal=" + codigoPostal +
                 ", lugarResidencia='" + lugarResidencia + '\'' +
+                ", teléfono='" + telefono + '\'' +
                 '}';
     }
 }

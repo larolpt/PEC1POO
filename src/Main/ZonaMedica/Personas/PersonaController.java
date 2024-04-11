@@ -85,7 +85,7 @@ public class PersonaController {
             String respuesta = input.nextLine().trim().toLowerCase();
             isValidInput = true;
 
-            if (respuesta.equals("si") || respuesta.equals("s")) { isActive = true; }
+            if (respuesta.equals("si") || respuesta.equals("s") || respuesta.equals("sí")) { isActive = true; }
             else if (respuesta.equals("no") || respuesta.equals("n")) { isActive = false; }
             else {
                 System.out.println("Respuesta no válida. Por favor, ingrese 'S' o 'N'.");
@@ -93,5 +93,22 @@ public class PersonaController {
             }
         } while (!isValidInput);
         return isActive;
+    }
+
+    public static int inputTelefono() {
+        String tel = "";
+        boolean isValid = false;
+
+        while (!isValid) {
+            System.out.print("Introduce el número de teléfono: ");
+            tel = input.nextLine().trim();
+            // Se comprueba con una expresión regular si el cp está en el formato correcto
+            if (tel.matches("\\b\\d{9}\\b")) {
+                isValid = true;
+            } else {
+                System.out.println("Formato del teléfono erroneo. El formato debe ser 9 cifras.");
+            }
+        }
+        return Integer.parseInt(tel);
     }
 }

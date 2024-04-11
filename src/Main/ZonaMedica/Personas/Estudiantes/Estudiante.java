@@ -18,8 +18,8 @@ public class Estudiante extends Persona {
         this.nombreUniversidad = "";
     }
 
-    public Estudiante(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, PersonalSanitario sanitarioAsignado, String nombreUniversidad) {
-        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia);
+    public Estudiante(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono, PersonalSanitario sanitarioAsignado, String nombreUniversidad) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
         this.sanitarioAsignado = sanitarioAsignado;
         this.nombreUniversidad = nombreUniversidad;
     }

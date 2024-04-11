@@ -11,6 +11,18 @@ public class Persona {
     protected Date fNacimiento;
     protected int codigoPostal;
     protected String lugarResidencia;
+    protected int telefono;
+
+    public Persona(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono) {
+        this.nombre = nombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.dni = dni;
+        this.fNacimiento = fNacimiento;
+        this.codigoPostal = codigoPostal;
+        this.lugarResidencia = lugarResidencia;
+        this.telefono = telefono;
+    }
 
     //builder
     public Persona() {
@@ -21,17 +33,8 @@ public class Persona {
         this.fNacimiento =  new Date(0000,00,00);
         this.codigoPostal = 0;
         this.lugarResidencia = "";
+        this.telefono = 123456789;
     }
-    public Persona(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia) {
-        this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.dni = dni;
-        this.fNacimiento = fNacimiento;
-        this.codigoPostal = codigoPostal;
-        this.lugarResidencia = lugarResidencia;
-    }
-
     //getters and setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -61,6 +64,7 @@ public class Persona {
         this.lugarResidencia = lugarResidencia;
     }
 
+    public void setTelefono(int telefono) { this.telefono = telefono; }
     public String getNombre() {
         return nombre;
     }
@@ -89,13 +93,15 @@ public class Persona {
         return lugarResidencia;
     }
 
+    public int getTelefono() { return telefono; }
+
     public String getNombreCompleto(){
         return this.getNombre() + " " + this.getPrimerApellido() + " " + this.getSegundoApellido();
     }
 
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Persona.Persona{" +
+        return "Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", primerApellido='" + primerApellido + '\'' +
                 ", segundoApellido='" + segundoApellido + '\'' +
@@ -103,6 +109,7 @@ public class Persona {
                 ", fNacimiento=" + fNacimiento +
                 ", codigoPostal=" + codigoPostal +
                 ", lugarResidencia='" + lugarResidencia + '\'' +
+                ", telefono=" + telefono +
                 '}';
     }
 }

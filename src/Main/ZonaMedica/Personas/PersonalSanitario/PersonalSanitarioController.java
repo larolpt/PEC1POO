@@ -21,15 +21,15 @@ public class PersonalSanitarioController extends PersonaController {
                         inputFechaNacimiento(),
                         inputCodigoPostal(),
                         inputResidencia(),
-                        inputActivo(),
                         inputConsultaExterna(),
-                        inputTurno())
+                        inputTurno(),
+                        inputTelefono())
         );
     }
     public static void modificarDatosPersonalSanitario(){
         int opcion, registro = 0;
         try{
-            System.out.print("Indique el número del registro del personal que quiera borrar: ");
+            System.out.print("Indique el número del registro del personal que quiera modificar: ");
             registro = input.nextInt();
             input.nextLine();
         }catch (InputMismatchException e){
@@ -65,7 +65,7 @@ public class PersonalSanitarioController extends PersonaController {
                     personal.setLugarResidencia(inputResidencia());
                     break;
                 case 8:
-                    personal.setIsActivo(inputActivo());
+                    personal.setTelefono(inputTelefono());
                     break;
                 case 9:
                     personal.setEspecialidad(inputConsultaExterna());
@@ -107,7 +107,7 @@ public class PersonalSanitarioController extends PersonaController {
         System.out.println(" | 1. Nombre              | | 2. Primer apellido | ");
         System.out.println(" | 3. Segundo apellido    | | 4. DNI             | ");
         System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
-        System.out.println(" | 7. Residencia          | | 8. Activo          | ");
+        System.out.println(" | 7. Residencia          | | 8. Teléfono        | ");
         System.out.println(" | 9. Consulta Externa    | | 10. Turno          | ");
         System.out.println(" | 0. Salir               | |                    | ");
         System.out.println("---------------------------------------------------");

@@ -1,7 +1,5 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
-import Main.ZonaMedica.Personas.Pacientes.TipoPruebas;
-
 import java.sql.Time;
 import java.util.Date;
 
@@ -38,5 +36,12 @@ public class CitaPrueba extends Cita {
                 ", dia=" + dia +
                 ", hora=" + hora +
                 '}';
+    }
+
+    public enum TipoPruebas {
+        ANALITICAS,
+        RAYOSX,
+        RESONACIAMAGNETICA,
+        ECOGRAFIA,
     }
 }

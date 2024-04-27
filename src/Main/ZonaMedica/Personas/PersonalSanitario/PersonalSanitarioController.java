@@ -1,7 +1,10 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
+import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
+import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
 import Main.ZonaMedica.Personas.PersonaController;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,6 +14,10 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*
 import static Main.ZonaMedica.Personas.PersonalSanitario.Turno.*;
 public class PersonalSanitarioController extends PersonaController {
     private static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        inputSueldo();
+    }
     public static void darAltaPersonal(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
         dataPersonalSanitario.add(new PersonalSanitario(
@@ -21,9 +28,10 @@ public class PersonalSanitarioController extends PersonaController {
                         inputFechaNacimiento(),
                         inputCodigoPostal(),
                         inputResidencia(),
+                        inputTelefono(),
                         inputConsultaExterna(),
                         inputTurno(),
-                        inputTelefono())
+                        inputSueldo())
         );
     }
     public static void modificarDatosPersonalSanitario(){
@@ -73,6 +81,12 @@ public class PersonalSanitarioController extends PersonaController {
                 case 10:
                     personal.setTurno(inputTurno());
                     break;
+                case 11:
+                    personal.setSueldo(inputSueldo());
+                    break;
+                case 12:
+                    //persona.setCitas(inputCitaPersonal);
+                    break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -109,6 +123,7 @@ public class PersonalSanitarioController extends PersonaController {
         System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
         System.out.println(" | 7. Residencia          | | 8. Teléfono        | ");
         System.out.println(" | 9. Consulta Externa    | | 10. Turno          | ");
+        System.out.println(" | 11. Sueldo             | | 12. Citas          | ");
         System.out.println(" | 0. Salir               | |                    | ");
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
@@ -159,5 +174,18 @@ public class PersonalSanitarioController extends PersonaController {
             }
         } while (!isValid);
         return turno;
+    }
+    public static int inputSueldo(){
+        int sueldo = 0;
+
+        try{
+            System.out.print("Introduce el sueldo de la Persona: ");
+            sueldo = input.nextInt();//Input para introducir el valor numerico
+        }catch (InputMismatchException e){
+            input.nextLine();//Se limpia el buffered
+            System.out.println("ERROR. Introduzca un valor entero");
+            inputSueldo();//Si salta que el valor introducido esta mal se vuelve a llamar al metodo
+        }
+        return sueldo;
     }
 }

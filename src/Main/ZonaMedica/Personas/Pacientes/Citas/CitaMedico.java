@@ -3,6 +3,7 @@ package Main.ZonaMedica.Personas.Pacientes.Citas;
 import java.sql.Time;
 import java.util.Date;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
+import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
 import Main.ZonaMedica.Personas.PersonalSanitario.UnidadesEspecializadas;
 
 public class CitaMedico extends Cita {
@@ -21,8 +22,16 @@ public class CitaMedico extends Cita {
         this.medicoAsignado = null;
         this.unidad = UnidadesEspecializadas.NO_NECESARIA;
     }
+    public CitaMedico(Date dia, boolean tipo, PersonalSanitario medicoAsignado, UnidadesEspecializadas unidad) {
+        // Llamar al constructor de la superclase con dia y aux
+        super(dia, obtenerAuxiliar(medicoAsignado));
 
-    public CitaMedico(Date dia, Time hora, boolean tipo, PersonalSanitario medicoAsignado, UnidadesEspecializadas unidad) {
+        this.tipo = tipo;
+        this.medicoAsignado = medicoAsignado;
+        this.unidad = unidad;
+    }
+
+    public CitaMedico(Date dia, boolean hora, boolean tipo, PersonalSanitario medicoAsignado, UnidadesEspecializadas unidad) {
         super(dia, hora);
         this.tipo = tipo;
         this.medicoAsignado = medicoAsignado;
@@ -45,7 +54,16 @@ public class CitaMedico extends Cita {
                 ", medicoAsignado=" + medicoAsignado +
                 ", unidad=" + unidad +
                 ", dia=" + dia +
-                ", hora=" + hora +
+                ", hora=" + horario +
                 '}';
+    }
+    //Se obitiene del turno del personal sanitario un boolean para crear las citas
+    private static boolean obtenerAuxiliar(PersonalSanitario medicoAsignado) {
+        if (medicoAsignado.getTurno() == Turno.MAÑANA) {
+            return true;
+        } else if (medicoAsignado.getTurno() == Turno.TARDE) {
+            return false;
+        }
+        return false;  // o manejo de error si es necesario
     }
 }

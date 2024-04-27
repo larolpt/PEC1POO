@@ -6,19 +6,25 @@ import java.util.Date;
 public class Cita{
     //attributes
     protected Date dia;
-    protected Time hora;
+
+    /**
+     Si el tipo == true cita por la mañana
+     Si el tipo == false cita por la tarde
+     **/
+    protected boolean horario;
 
     //builder
 
-    public Cita() {
-        this.dia = new Date(0,0,0);
-        this.hora = new Time(0);
+    public Cita(Date dia, boolean horario) {
+        this.dia = dia;
+        this.horario = horario;
     }
 
-    public Cita(Date dia, Time hora) {
-        this.dia = dia;
-        this.hora = hora;
+    public Cita(){
+        dia = null;
+        horario = false;
     }
+
 
     //getters and setters
 
@@ -30,19 +36,19 @@ public class Cita{
         this.dia = dia;
     }
 
-    public Time getHora() {
-        return hora;
+    public boolean isHorario() {
+        return horario;
     }
 
-    public void setHora(Time hora) {
-        this.hora = hora;
+    public void setHorario(boolean horario) {
+        this.horario = horario;
     }
 
     @Override
     public String toString() {
         return "Main.ZonaMedica.Persona.Pacientes.Cita{" +
                 "dia=" + dia +
-                ", hora=" + hora +
+                ", hora=" + horario +
                 '}';
     }
 }

@@ -1,7 +1,11 @@
 package Main.ZonaMedica.Personas;
 
+import com.sun.jdi.Value;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -51,7 +55,6 @@ public class PersonaController {
     }
     public static Date inputFechaNacimiento(){
         String fecha;
-        int mes, dia;
         Date fechaNacimiento = null;
         System.out.print("Introduce la fecha de nacimiento en formato dd/MM/yyyy: ");
         fecha = input.nextLine().trim();
@@ -59,17 +62,13 @@ public class PersonaController {
         try {
             fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
             String[] partes = fecha.split("/");
-            dia = Integer.parseInt(partes[0]);
-            mes = Integer.parseInt(partes[1]);
+            LocalDate.of(Integer.parseInt(partes[2]), Integer.parseInt(partes[1]), Integer.parseInt(partes[0]));
 
-            if (dia < 1 || dia > 31 || mes < 1 || mes > 12) {
-                throw new IllegalArgumentException("Fecha inválida");
-            }
         } catch (ParseException e) {
             // Manejar una excepción si la entrada no está en el formato esperado
             System.out.println("Error: La fecha ingresada no está en el formato dd/MM/yyyy.");
             inputFechaNacimiento();
-        }catch (IllegalArgumentException e ){
+        }catch (DateTimeException e ){
             // Manejar si la fecha introducida es correcta
             System.out.println("Error: La fecha ingresada no es correcta.");
             inputFechaNacimiento();

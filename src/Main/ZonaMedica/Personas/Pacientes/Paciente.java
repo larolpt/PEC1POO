@@ -21,6 +21,14 @@ public class Paciente extends Persona {
         this.historialMedico = historialMedico;
     }
 
+    public Paciente(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono, boolean estaIngresado, boolean tieneSeguro) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
+        this.estaIngresado = estaIngresado;
+        this.tieneSeguro = tieneSeguro;
+        this.citas = null;
+        this.historialMedico = null;
+    }
+
     //getters and setters
     public boolean isEstaIngresado() {
         return estaIngresado;

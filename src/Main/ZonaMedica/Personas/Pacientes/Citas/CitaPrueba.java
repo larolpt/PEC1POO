@@ -1,5 +1,7 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
+import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
+
 import java.sql.Time;
 import java.util.Date;
 
@@ -14,13 +16,12 @@ public class CitaPrueba extends Cita {
         this.prueba = null;
     }
 
-    public CitaPrueba(Date dia, Time hora, TipoPruebas prueba) {
+    public CitaPrueba(Date dia, boolean hora, TipoPruebas prueba) {
         super(dia, hora);
         this.prueba = prueba;
     }
 
     //getters and setters
-
     public TipoPruebas getPrueba() {
         return prueba;
     }
@@ -34,14 +35,7 @@ public class CitaPrueba extends Cita {
         return "Main.ZonaMedica.Persona.Pacientes.CitaPrueba{" +
                 "prueba=" + prueba +
                 ", dia=" + dia +
-                ", hora=" + hora +
+                ", hora=" + horario +
                 '}';
-    }
-
-    public enum TipoPruebas {
-        ANALITICAS,
-        RAYOSX,
-        RESONACIAMAGNETICA,
-        ECOGRAFIA,
     }
 }

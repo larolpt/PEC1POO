@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
+import Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedico;
 import Main.ZonaMedica.Personas.Persona;
 public class Paciente extends Persona {
     //attribute
     protected boolean estaIngresado;
     protected boolean tieneSeguro;
+
     protected ArrayList<Cita> citas;
     protected ArrayList<ExpedienteMedico> historialMedico;
 
@@ -20,13 +22,19 @@ public class Paciente extends Persona {
         this.citas = citas;
         this.historialMedico = historialMedico;
     }
-
-    public Paciente(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono, boolean estaIngresado, boolean tieneSeguro) {
-        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
-        this.estaIngresado = estaIngresado;
-        this.tieneSeguro = tieneSeguro;
-        this.citas = null;
+    public Paciente(){
+        super();
+        this.citas =null;
         this.historialMedico = null;
+        this.estaIngresado = false;
+        this.tieneSeguro = false;
+    }
+    public Paciente(String nombre, String primerApellido, String segundoApellido, String dni, Date fNacimiento, int codigoPostal, String lugarResidencia, int telefono, boolean tieneSeguro) {
+        super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
+        this.estaIngresado = false;
+        this.tieneSeguro = tieneSeguro;
+        this.citas = new ArrayList<>();
+        this.historialMedico = new ArrayList<>();
     }
 
     //getters and setters
@@ -54,12 +62,20 @@ public class Paciente extends Persona {
         this.citas = citas;
     }
 
+    public void setCitas(Cita citas) {
+        this.citas.add(citas);
+    }
+
     public ArrayList<ExpedienteMedico> getHistorialMedico() {
         return historialMedico;
     }
 
     public void setHistorialMedico(ArrayList<ExpedienteMedico> historialMedico) {
         this.historialMedico = historialMedico;
+    }
+    public void eliminarCita(int numCita){
+        this.citas.remove(numCita);
+        System.out.println("Cita borrada correctamente");
     }
 
     @Override

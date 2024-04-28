@@ -7,6 +7,7 @@ import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.*;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.dataPersonalSanitario;
 
@@ -24,7 +25,6 @@ public class PacienteController extends PersonaController {
                 inputCodigoPostal(),
                 inputResidencia(),
                 inputTelefono(),
-                inputEstaIngresado(),
                 inputTieneSeguro()
                 )
         );
@@ -32,7 +32,8 @@ public class PacienteController extends PersonaController {
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;
         try{
-            System.out.print("Indique el número del registro del personal que quiera modificar: ");
+            mostrarPacientes();
+            System.out.print("Indique el número del registro del paciente que quiera modificar: ");
             registro = input.nextInt();
             input.nextLine();
         }catch (InputMismatchException e){
@@ -76,12 +77,6 @@ public class PacienteController extends PersonaController {
                 case 10:
                     personal.setTieneSeguro(inputTieneSeguro());
                     break;
-                case 11:
-
-                    break;
-                case 12:
-                    //persona.setCitas(inputCitaPersonal);
-                    break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -91,22 +86,22 @@ public class PacienteController extends PersonaController {
             }
         } while (opcion != 0);
     }
-    public static void eliminarPersonalSanitario(){
+    public static void eliminarPaciente(){
         int registro = 0;
         try{
-            System.out.print("Indique el número del registro del personal que quiera borrar: ");
+            System.out.print("Indique el número del registro del paciente que quiera borrar: ");
             registro = input.nextInt();
             input.nextLine();
         }catch (InputMismatchException e){
             System.out.println("Error: Introduzca un valor numerico solo. ");
-            eliminarPersonalSanitario();
+            eliminarPaciente();
         }
-        dataPersonalSanitario.remove(registro);
+        pacienteData.remove(registro);
     }
-    public static void mostrarPersonal(){
-        for(int i=0; i < dataPersonalSanitario.size(); i+=2) {
-            System.out.print(dataPersonalSanitario.get(i));
-            System.out.print(dataPersonalSanitario.get(i += 1));
+    public static void mostrarPacientes(){
+        for(int i=0; i < pacienteData.size(); i+=2) {
+            System.out.print(pacienteData.get(i));
+            System.out.print(pacienteData.get(i += 1));
             System.out.println(" ");
         }
     }
@@ -118,13 +113,13 @@ public class PacienteController extends PersonaController {
         System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
         System.out.println(" | 7. Residencia          | | 8. Teléfono        | ");
         System.out.println(" | 9. Esta ingresado      | | 10. Tiene Seguro   | ");
-        System.out.println(" | 11. Citas              | | 12. Historial      | ");
         System.out.println(" | 0. Salir               | |                    | ");
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
     }
-    public static Cita inputCita(){
+    public static Cita inputCita(Paciente paciente){
         int opcion;
+        Cita cita = null;
         System.out.println("¿Qué tipo de prueba quiere dar de alta? Introduzca el número correspondiente: ");
         System.out.println("---------------------------------------------------------");
         System.out.println("| 1.-Cita con Personal Medico. | 2.-Cita prueba medica. |");
@@ -132,13 +127,13 @@ public class PacienteController extends PersonaController {
         System.out.print("Opcion: ");
         try{
             opcion = input.nextInt();
-            if(opcion == 1){}
-            else if (opcion == 2) {}
-            else{}
+            if(opcion == 1){ cita = inputCitaMedico(paciente); }
+            else if (opcion == 2) { cita = inputCitaPrueba(); }
+            else{ throw new InputMismatchException(); }
         }catch (InputMismatchException e){
-
+            System.out.println("Ese número no esta en las opciones");
         }
-        return new Cita();
+        return cita;
     }
     public static boolean inputTieneSeguro(){
         System.out.print("¿Tiéne seguro medico? (S/N): ");

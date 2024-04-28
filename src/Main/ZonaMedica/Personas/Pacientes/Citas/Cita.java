@@ -2,6 +2,7 @@ package Main.ZonaMedica.Personas.Pacientes.Citas;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.UUID;
 
 public class Cita{
     //attributes
@@ -46,9 +47,15 @@ public class Cita{
 
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Persona.Pacientes.Cita{" +
-                "dia=" + dia +
-                ", hora=" + horario +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Main.ZonaMedica.Persona.Pacientes.Cita {").append(System.lineSeparator());
+        sb.append("\tDía: ").append(dia).append(System.lineSeparator());
+        sb.append("\tHorario: ").append(horario ? "Mañana" : "Tarde").append(System.lineSeparator());
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public UUID getId() {
+        return null;
     }
 }

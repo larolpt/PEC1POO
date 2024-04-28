@@ -5,10 +5,12 @@ import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.UUID;
 
 public class CitaPaciente extends Cita {
 
     //attribute
+    protected UUID id;
     /**
      Si el tipo == true cita presencial
      Si el tipo == false cita telefonica
@@ -18,8 +20,9 @@ public class CitaPaciente extends Cita {
 
     //builder
 
-    public CitaPaciente(Date dia, boolean hora, boolean tipo, Paciente pacienteAsignado) {
+    public CitaPaciente(Date dia, boolean hora,UUID id, boolean tipo, Paciente pacienteAsignado) {
         super(dia, hora);
+        this.id = id;
         this.tipo = tipo;
         this.pacienteAsignado = pacienteAsignado;
     }
@@ -31,6 +34,14 @@ public class CitaPaciente extends Cita {
     }
 
     //getters and setters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public boolean isTipo() {
         return tipo;
@@ -48,13 +59,15 @@ public class CitaPaciente extends Cita {
         this.pacienteAsignado = pacienteAsignado;
     }
 
-    @Override
     public String toString() {
-        return "CitaPaciente{" +
-                "tipo=" + tipo +
-                ", pacienteAsignado=" + pacienteAsignado +
-                ", hora=" + horario +
-                ", dia=" + dia +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Main.ZonaMedica.Persona.Pacientes.CitaPaciente {").append(System.lineSeparator());
+        sb.append("\tID: ").append(id).append(System.lineSeparator());
+        sb.append("\tTipo: ").append(tipo ? "Presencial" : "Telefónica").append(System.lineSeparator());
+        sb.append("\tPaciente asignado: ").append(pacienteAsignado).append(System.lineSeparator());
+        sb.append("\tDía: ").append(dia).append(System.lineSeparator());
+        sb.append("\tHorario: ").append(horario ? "Mañana" : "Tarde").append(System.lineSeparator());
+        sb.append("}");
+        return sb.toString();
     }
 }

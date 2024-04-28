@@ -1,6 +1,9 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
+import Main.ZonaMedica.Personas.Pacientes.Paciente;
+import Main.ZonaMedica.Personas.Persona;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
+import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
 import Main.ZonaMedica.Personas.PersonalSanitario.UnidadesEspecializadas;
 
 import java.text.ParseException;
@@ -10,36 +13,105 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.UUID;
 
 import static Main.ZonaMedica.Personas.Pacientes.Citas.TipoPruebas.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.dataPersonalSanitario;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.mostrarPersonal;
+import static Main.ZonaMedica.Personas.PersonalSanitario.UnidadesEspecializadas.asignarUnidad;
+import static Main.ZonaMedica.Personas.PersonalSanitario.UnidadesEspecializadas.mostrarUnidades;
 
 public class CitaController {
 
     public static Scanner input = new Scanner(System.in);
+    public static CitaMedico inputCitaMedico(Paciente paciente){
+        UUID id = UUID.randomUUID();
+        Date fechaCita = inputFechaCita();
+        boolean tipoCita = inputTipoCita();
+        PersonalSanitario medico = inputAsignarSanitario();
 
-    public static Cita inputCitaMedico(){
+        medico.addCitas(new CitaPaciente(
+                fechaCita,
+                obtenerHorario(medico),
+                id,
+                tipoCita,
+                paciente
+        ));
         return new CitaMedico(
-                inputFechaCita(),
-                inputTipoCita(),
-                inputAsignarSanitario(),
+                fechaCita,
+                obtenerHorario(medico),
+                id,
+                tipoCita,
+                medico,
                 inputUnidadEspecializada()
         );
     }
+    public static void eliminarCitasPacientes(Paciente paciente){
+        int numCita = -1;
+        Cita cita = null;
+        try{
+            System.out.println("Elija la cita que quiere eliminar: ");
+            numCita =  input.nextInt()-1;
+            cita = paciente.getCitas().get(numCita); //Cita que quiere borrar el usuario
 
-    public static Cita inputCitaPrueba(){
+            if(cita instanceof CitaMedico){//Comprobamos si es una cita para el medico para borrar tambien la lista del medico
+                for (int i=0 ; ((CitaMedico) cita).getMedicoAsignado().getCitas().size()-1 > i ; i++){
+                    if(((CitaMedico) cita).getMedicoAsignado().getCitas().get(i).getId().equals(((CitaMedico) cita).getId())){//Se compara el id de las dos citas y si es igual se borra de la lista del medico
+                        ((CitaMedico) cita).getMedicoAsignado().getCitas().remove(i);
+                        break;
+                    }
+                }
+            }
+            paciente.getCitas().remove(numCita);
+            System.out.println("Borrado correctamente la cita");
+        }catch(Exception e){
+            System.out.println("Error: Introduce un numero o un numero asignado a la lista: ");
+        }
+    }
+    public static void modificarCitaMedico(PersonalSanitario medico){
+        int numCita = -1;
+        CitaPaciente cita = null;
+        Paciente paciente = null;
+        try{
+            System.out.println("Elija la cita que quiere eliminar: ");
+            numCita =  input.nextInt()-1;
+            cita = medico.getCitas().get(numCita); //Cita que quiere borrar el usuario
+            paciente = medico.getCitas().get(numCita).getPacienteAsignado();//Guardamos el paciente para poder crear luego la cita con el mismo paciente
+            for (int i=0 ; ((CitaPaciente) cita).getPacienteAsignado().getCitas().size()-1 > i ; i++){
+                if(cita.getPacienteAsignado().getCitas().get(i).getId().equals(cita.getId())){//Se compara el id de las dos citas y si es igual se borra de la lista del medico
+                    cita.getPacienteAsignado().getCitas().remove(i);
+                    break;
+                }
+            }
+            medico.getCitas().remove(numCita);
+            System.out.println("Borrado correctamente la cita");
+        }catch(Exception e){
+            System.out.println("Error: Introduce un numero o un numero asignado a la lista: ");
+        }
+        inputCitaMedico(paciente);
+    }
+    public static CitaPrueba inputCitaPrueba(){
         return new CitaPrueba(
                 inputFechaCita(),
                 inputHorario(),
                 inputPrueba()
         );
     }
-
     public static UnidadesEspecializadas inputUnidadEspecializada(){
-        return null;
+        int unidad = 0;
+        UnidadesEspecializadas unidadesEspecializadas = null;
+        mostrarUnidades();//llamada al metodo del enum para mostrar las pruebas
+        try{
+            System.out.print("Introduce el número asignado de cada prueba para elegir:");
+            unidad = input.nextInt();
+            unidadesEspecializadas = asignarUnidad(unidad);
+        }catch(IllegalArgumentException | InputMismatchException e){
+            input.nextLine();//limpiar buffered
+            System.out.println("Error: el número elegido no esta asignado a ninguna prueba");
+            inputUnidadEspecializada();//llamada al metoddo si ha habido un fallo al introducir el número
+        }
+        return unidadesEspecializadas;
     }
-
     public static TipoPruebas inputPrueba(){
         int prueba = 0;
         TipoPruebas pruebaElegida = null;
@@ -100,7 +172,7 @@ public class CitaController {
         boolean isValidInput;
 
         do {
-            System.out.println("Decide si la cita es presencial(P) o telefonica(T):");
+            System.out.print("Decide si la cita es presencial(P) o telefonica(T):");
             String respuesta = input.nextLine().trim().toUpperCase();
             isValidInput = true;
 
@@ -131,5 +203,13 @@ public class CitaController {
             inputAsignarSanitario();//Llamada al metodo otra vez si no ha introducido un numero correcto u otra cosa que no es un numero.
         }
         return dataPersonalSanitario.get(registro-1);
+    }
+    private static boolean obtenerHorario(PersonalSanitario medicoAsignado) {
+        if (medicoAsignado.getTurno() == Turno.MAÑANA) {
+            return true;
+        } else if (medicoAsignado.getTurno() == Turno.TARDE) {
+            return false;
+        }
+        return false;  // o manejo de error si es necesario
     }
 }

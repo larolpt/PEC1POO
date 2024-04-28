@@ -11,6 +11,7 @@ public class PersonalSanitario extends Persona {
     //attribute
     protected ConsultasExternas especialidad;
     protected Turno turno;
+
     protected ArrayList<CitaPaciente> citas;
     protected int sueldo;
 
@@ -34,7 +35,7 @@ public class PersonalSanitario extends Persona {
         super();
         this.especialidad = ConsultasExternas.NO_ASIGNADO;
         this.turno = Turno.NO_ASIGNADO;
-        this.citas = null;
+        this.citas = new ArrayList<>();
         this.sueldo = 0;
     }
 
@@ -63,7 +64,7 @@ public class PersonalSanitario extends Persona {
         this.citas = citas;
     }
 
-    public void setCitas(CitaPaciente cita) {
+    public void addCitas(CitaPaciente cita) {
         this.citas.add(cita);
     }
 

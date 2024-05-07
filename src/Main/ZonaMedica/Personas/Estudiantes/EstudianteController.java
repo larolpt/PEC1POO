@@ -1,5 +1,6 @@
 package Main.ZonaMedica.Personas.Estudiantes;
 
+import Main.ZonaMedica.Campus.Unidades.Unidades;
 import Main.ZonaMedica.Personas.Persona;
 import Main.ZonaMedica.Personas.PersonaController;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
@@ -216,7 +217,8 @@ public class EstudianteController extends PersonaController {
                 if(registro == 0){
                     return null;//No se le asigna ninguno.
                 }
-                if(dataPersonalSanitario.size()-1 <= registro-1){
+                if(dataPersonalSanitario.size() < registro ||
+                        dataPersonalSanitario.get(registro-1).equals(new Unidades("Unidad de formación",""))){;
                     throw new InputMismatchException();
                 }
                 persona = dataPersonalSanitario.get(registro-1);
@@ -226,9 +228,11 @@ public class EstudianteController extends PersonaController {
 
         }catch (InputMismatchException e){
             System.out.println("Error: Introduzca un valor numerico o un número de registro que exista. ");
+            input.nextLine();//Se limpia el buffed.
             inputAsignarSanitario();//Llamada al metodo otra vez si no ha introducido un numero correcto u otra cosa que no es un numero.
         }catch (IndexOutOfBoundsException e){
             System.out.println("Error: No existe este registro. ");
+            input.nextLine();//Se limpia el buffed.
             modificarDatosEstudiante();//LLamada a este metodo para que se vuelva a pedir el numero de registro
         }
         return persona;
@@ -245,5 +249,20 @@ public class EstudianteController extends PersonaController {
         System.out.println("-----------------------------------------------------");
         System.out.print(" Opción: ");
     }
+
+    public static void mostrarPersonalEstudiantes(){
+        if(dataPersonalSanitario.isEmpty()){
+            System.out.println("No hay personal medico");
+        }else{
+            for(PersonalSanitario p: dataPersonalSanitario){
+                if(p.getUnidades().equals(new Unidades("Unidad de formación",""))){
+                    System.out.println(p.getNombreCompleto());
+                    System.out.println(p.getTurno());
+                    System.out.println(p.getUnidades());
+                }
+            }
+        }
+    }
+
 
 }

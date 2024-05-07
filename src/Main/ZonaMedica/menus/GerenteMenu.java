@@ -10,6 +10,7 @@ import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.generarHabitaciones;
+import static Main.ZonaMedica.Campus.Unidades.UnidadesData.generarUnidades;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.generarDatosPaciente;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.generarDatosPersonalSanitario;
 
@@ -18,6 +19,7 @@ public class GerenteMenu {
         generarDatosPersonalSanitario();
         generarHabitaciones();
         generarDatosPaciente();
+        generarUnidades();
         menu();
     }
 
@@ -26,6 +28,9 @@ public class GerenteMenu {
 
         do {
             // Mostrar el menú
+            System.out.println("=======================================");
+            System.out.println("             MENU GENERENTE         ");
+            System.out.println("=======================================");
             System.out.println("Menú:");
             System.out.println("1. Gestionar personal médico.");
             System.out.println("2. Gestion de estudiantes.");

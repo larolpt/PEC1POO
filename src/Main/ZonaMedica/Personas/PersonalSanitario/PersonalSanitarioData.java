@@ -1,5 +1,7 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
+import Main.ZonaMedica.Campus.Unidades.Unidades;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,7 +15,7 @@ public class PersonalSanitarioData {
 
         dataPersonalSanitario.add(new PersonalSanitario("sdadadad","dasdadadad",
                 "sadadada","12345678a",new Date(1903,11,11),12345,"sdadada"
-        ,123456789,ConsultasExternas.CIRUGIA_GENERAL,Turno.MAÑANA,1111));
+        ,123456789,new Unidades("Unidad de formación",""),Turno.MAÑANA,1111));
         
 
     }

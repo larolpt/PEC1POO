@@ -1,5 +1,6 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
+import Main.ZonaMedica.Campus.Unidades.Unidades;
 import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
 import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
 import Main.ZonaMedica.Personas.Pacientes.Paciente;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static Main.ZonaMedica.Campus.Unidades.UnidadesData.*;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
 import static Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
@@ -112,7 +114,7 @@ public class PersonalSanitarioController extends PersonaController {
                 inputCodigoPostal(),
                 inputResidencia(),
                 inputTelefono(),
-                inputConsultaExterna(),
+                inputUnidades(),
                 inputTurno(),
                 inputSueldo())
         );
@@ -164,7 +166,7 @@ public class PersonalSanitarioController extends PersonaController {
                     personal.setTelefono(inputTelefono());
                     break;
                 case 9:
-                    personal.setEspecialidad(inputConsultaExterna());
+                    personal.setUnidades(inputUnidades());
                     break;
                 case 10:
                     personal.setTurno(inputTurno());
@@ -208,7 +210,7 @@ public class PersonalSanitarioController extends PersonaController {
             System.out.println(
                     "| " + String.format("%1$-36s", 1 + ".-") + " |\n" +
                             "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.getFirst().getNombreCompleto()) + " |\n" +
-                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.getFirst().getEspecialidad())
+                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.getFirst().getUnidades())
             );
             System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
         }else{
@@ -222,8 +224,8 @@ public class PersonalSanitarioController extends PersonaController {
                                 "| " + String.format("%1$-36s", cont2 + ".-") + " |\n" +
                                 "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(i).getNombreCompleto()) +
                                 "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(cont).getNombreCompleto()) + " |\n" +
-                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(i).getEspecialidad()) +
-                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(cont).getEspecialidad()) + " |"
+                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(i).getUnidades()) +
+                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(cont).getUnidades()) + " |"
                 );
                 System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
             }
@@ -236,35 +238,31 @@ public class PersonalSanitarioController extends PersonaController {
         System.out.println(" | 3. Segundo apellido    | | 4. DNI             | ");
         System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
         System.out.println(" | 7. Residencia          | | 8. Teléfono        | ");
-        System.out.println(" | 9. Consulta Externa    | | 10. Turno          | ");
+        System.out.println(" | 9. Unidades            | | 10. Turno          | ");
         System.out.println(" | 11. Sueldo             | | 12. Citas          | ");
         System.out.println(" | 0. Salir               | |                    | ");
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
     }
-    public static ConsultasExternas inputConsultaExterna() {
-        ConsultasExternas especialidad = null;
-        boolean isValid = false;
+    public static Unidades inputUnidades() {
+        String unidad = "";
+        String subUnidad = "";
+        unidad = inputUnidadesMap();//Primero obtenemos una de las unidades mas generales
 
-        do {
-            try {
-                System.out.println("Introduzca el número correspondiente para asignar la consulta:");
-                mostrarConsultasExternas();
-                System.out.print("Número Consulta: ");
-                int numeroConsulta = input.nextInt();
-                input.nextLine(); // Limpiar el buffer del scanner
+        switch (unidad) {//Si la unidad tiene subunidades te hara elegir con las opciones correspondiente en cada caso.
+            case "Pruebas medicas":
+                subUnidad = inputTipoPruebas();
+                break;
+            case "Unidades especializadas":
+                subUnidad = inputEnfermedadesComunes();
+                break;
+            case "Consultas externas":
+                subUnidad = inputConsultasExternas();
+            default:
+                subUnidad = "";
+        }
 
-                especialidad = asignarConsultaExterna(numeroConsulta);
-                isValid = true; // Si no se lanza una excepción, el número de consulta es válido
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Debe ingresar un número entero.");
-                input.nextLine(); // Limpiar el buffer del scanner
-            }
-        } while (!isValid);
-
-        return especialidad;
+        return new Unidades(unidad, subUnidad);
     }
     public static Turno inputTurno(){
         Turno turno = null;

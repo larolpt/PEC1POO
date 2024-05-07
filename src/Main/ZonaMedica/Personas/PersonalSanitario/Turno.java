@@ -24,6 +24,7 @@ public enum Turno {
             System.out.print(enumItem.getNumero() + ".-" + enumItem + "\t");
             cont++;
         }
+        System.out.print("\n");
     }
     public static Turno asignarTurno(int numTurno){
         for (Turno turno : Turno.values()) {
@@ -32,10 +33,5 @@ public enum Turno {
             }
         }
         throw new IllegalArgumentException("No se encontró ningun turno con ese numero: " + numTurno);
-    }
-
-    public static void main(String[] args) {
-        mostrarTurnos();
-        System.out.println(asignarTurno(1));
     }
 }

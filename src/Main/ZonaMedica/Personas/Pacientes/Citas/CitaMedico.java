@@ -68,26 +68,4 @@ public class CitaMedico extends Cita {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
-        String citaType = tipo ? "Presencial" : "Telefónica";
-        String medicoInfo = (medicoAsignado != null) ? medicoAsignado.toString() : "No asignado";
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Main.ZonaMedica.Persona.Pacientes.CitaMedico {");
-        sb.append(System.lineSeparator());
-        sb.append("\tTipo: ").append(citaType);
-        sb.append(System.lineSeparator());
-        sb.append("\tMédico asignado: ").append(medicoInfo);
-        sb.append(System.lineSeparator());
-        sb.append("\tUnidad: ").append(unidad);
-        sb.append(System.lineSeparator());
-        sb.append("\tDía: ").append(dia);
-        sb.append(System.lineSeparator());
-        sb.append("\tHora: ").append(horario);
-        sb.append(System.lineSeparator());
-        sb.append("}");
-
-        return sb.toString();
-    }
 }

@@ -3,19 +3,24 @@ package Main.ZonaMedica.Personas.Pacientes.Citas;
 import Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas;
 
 public enum TipoPruebas {
-    ANALITICAS(0),
-    RAYOSX(1),
-    RESONACIAMAGNETICA(2),
-    ECOGRAFIA(3);
+    ANALITICAS(0,50),
+    RAYOSX(1,150),
+    RESONACIAMAGNETICA(2,200),
+    ECOGRAFIA(3,100);
 
     private final int numAsignado;
+    private final int coste;
 
-    TipoPruebas(int numAsignado) {
+    TipoPruebas(int numAsignado, int coste) {
         this.numAsignado = numAsignado;
+        this.coste = coste;
     }
 
     public int getNumero(){
         return numAsignado;
+    }
+    public int getCoste(){
+        return coste;
     }
 
     public static void mostrarPruebas(){

@@ -8,13 +8,58 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.*;
+import static Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedicoController.menuExpediente;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.dataPersonalSanitario;
 
 public class PacienteController extends PersonaController {
     public static Scanner input = new Scanner(System.in);
 
-    public static void darAltaPersonal(){
+    public static void menuPaciente(){
+        int opcion;
+        do {
+            System.out.println("=======================================");
+            System.out.println("         MENU PACIENTES    ");
+            System.out.println("=======================================");
+            System.out.println("1. Dar de alta paciente");
+            System.out.println("2. Modificar datos de paciente");
+            System.out.println("3. Eliminar paciente");
+            System.out.println("4. Mostrar pacientes");
+            System.out.println("5. Citas");
+            System.out.println("6. Historial Medico");
+            System.out.println("0. Salir");
+            System.out.print("Ingrese su opción: ");
+            opcion = input.nextInt();
+            input.nextLine(); // Limpiar el buffer del scanner
+
+            switch (opcion) {
+                case 1:
+                    darAltaPaciente();
+                    break;
+                case 2:
+                    modificarDatosPacientes();
+                    break;
+                case 3:
+                    eliminarPaciente();
+                    break;
+                case 4:
+                    mostrarPacientes();
+                    break;
+                case 5:
+                    menuGestionCitasMedicasPacientes();
+                    break;
+                case 6:
+                    menuExpediente();
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
+            }
+        } while (opcion != 0);
+    }
+    public static void darAltaPaciente(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
         pacienteData.add(new Paciente(
                 inputNombre(),
@@ -31,17 +76,7 @@ public class PacienteController extends PersonaController {
     }
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;
-        try{
-            mostrarPacientes();
-            System.out.print("Indique el número del registro del paciente que quiera modificar: ");
-            registro = input.nextInt();
-            input.nextLine();
-        }catch (InputMismatchException e){
-            System.out.println("Error: Introduzca un valor numerico solo. ");
-            modificarDatosPacientes();
-        }
-        // Menú para elegir qué atributo del usuario modificar
-        Paciente personal = pacienteData.get(registro);
+        Paciente personal = getPaciente();
         do {
             mostrarAtributos();
             opcion = input.nextInt();
@@ -87,22 +122,11 @@ public class PacienteController extends PersonaController {
         } while (opcion != 0);
     }
     public static void eliminarPaciente(){
-        int registro = 0;
-        try{
-            System.out.print("Indique el número del registro del paciente que quiera borrar: ");
-            registro = input.nextInt();
-            input.nextLine();
-        }catch (InputMismatchException e){
-            System.out.println("Error: Introduzca un valor numerico solo. ");
-            eliminarPaciente();
-        }
-        pacienteData.remove(registro);
+        pacienteData.remove(getPaciente());
     }
     public static void mostrarPacientes(){
-        for(int i=0; i < pacienteData.size(); i+=2) {
+        for(int i=0; i < pacienteData.size(); i++) {
             System.out.print(pacienteData.get(i));
-            System.out.print(pacienteData.get(i += 1));
-            System.out.println(" ");
         }
     }
     public static void mostrarAtributos(){
@@ -116,24 +140,6 @@ public class PacienteController extends PersonaController {
         System.out.println(" | 0. Salir               | |                    | ");
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
-    }
-    public static Cita inputCita(Paciente paciente){
-        int opcion;
-        Cita cita = null;
-        System.out.println("¿Qué tipo de prueba quiere dar de alta? Introduzca el número correspondiente: ");
-        System.out.println("---------------------------------------------------------");
-        System.out.println("| 1.-Cita con Personal Medico. | 2.-Cita prueba medica. |");
-        System.out.println("---------------------------------------------------------");
-        System.out.print("Opcion: ");
-        try{
-            opcion = input.nextInt();
-            if(opcion == 1){ cita = inputCitaMedico(paciente); }
-            else if (opcion == 2) { cita = inputCitaPrueba(); }
-            else{ throw new InputMismatchException(); }
-        }catch (InputMismatchException e){
-            System.out.println("Ese número no esta en las opciones");
-        }
-        return cita;
     }
     public static boolean inputTieneSeguro(){
         System.out.print("¿Tiéne seguro medico? (S/N): ");
@@ -159,5 +165,24 @@ public class PacienteController extends PersonaController {
             }
         } while (!isValidInput);
         return isActive;
+    }
+    public static Paciente getPaciente(){
+        Paciente paciente = null;
+        int registro = -1;
+        try{
+            mostrarPacientes();
+            System.out.print("Indique el número del registro del paciente que quiera elegir: ");
+            registro = input.nextInt()-1;
+            input.nextLine();
+            paciente = pacienteData.get(registro);
+        }catch (InputMismatchException e){
+            System.out.println("Error: Introduzca un valor numerico solo. ");
+            input.nextLine();
+            getPaciente();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Error: No existe este registro. ");
+            getPaciente();//LLamada a este metodo para que se vuelva a pedir el numero de registro
+        }
+        return paciente;
     }
 }

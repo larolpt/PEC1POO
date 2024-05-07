@@ -31,8 +31,6 @@ public class Habitacion {
     }
 
     //getters and setters
-
-
     public int getNumero() {
         return numero;
     }
@@ -86,14 +84,19 @@ public class Habitacion {
         this.fechaIngreso = LocalDate.now();
     }
 
+
+
     @Override
     public String toString() {
-        return "Habitacion{" +
-                "numero=" + numero +
-                ", ocupada=" + ocupada +
-                ", paciente=" + paciente +
-                ", motivoAdmision='" + motivoAdmision + '\'' +
-                ", fechaIngreso=" + fechaIngreso +
-                '}';
+        String ocupadaString = ocupada ? "Ocupada" : "Desocupada";
+        String pacienteString = (paciente != null) ? paciente.getNombre() : "Sin paciente asignado";
+        return "=============================================\n" +
+                "| Número de habitación: " + numero + "\n" +
+                "===========================================\n" +
+                "| Estado: " + ocupadaString + "\n" +
+                "| Paciente: " + pacienteString + "\n" +
+                "| Motivo de admisión: " + motivoAdmision + "\n" +
+                "| Fecha de ingreso: " + fechaIngreso + "\n" +
+                "===========================================";
     }
 }

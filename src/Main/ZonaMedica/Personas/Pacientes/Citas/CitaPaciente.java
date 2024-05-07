@@ -59,15 +59,4 @@ public class CitaPaciente extends Cita {
         this.pacienteAsignado = pacienteAsignado;
     }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Main.ZonaMedica.Persona.Pacientes.CitaPaciente {").append(System.lineSeparator());
-        sb.append("\tID: ").append(id).append(System.lineSeparator());
-        sb.append("\tTipo: ").append(tipo ? "Presencial" : "Telefónica").append(System.lineSeparator());
-        sb.append("\tPaciente asignado: ").append(pacienteAsignado).append(System.lineSeparator());
-        sb.append("\tDía: ").append(dia).append(System.lineSeparator());
-        sb.append("\tHorario: ").append(horario ? "Mañana" : "Tarde").append(System.lineSeparator());
-        sb.append("}");
-        return sb.toString();
-    }
 }

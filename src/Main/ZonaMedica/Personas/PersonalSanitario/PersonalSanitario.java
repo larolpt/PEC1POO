@@ -27,7 +27,7 @@ public class PersonalSanitario extends Persona {
         super(nombre, primerApellido, segundoApellido, dni, fNacimiento, codigoPostal, lugarResidencia, telefono);
         this.especialidad = especialidad;
         this.turno = turno;
-        this.citas = null;
+        this.citas = new ArrayList<>();
         this.sueldo = sueldo;
     }
 

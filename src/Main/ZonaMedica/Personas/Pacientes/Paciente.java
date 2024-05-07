@@ -2,10 +2,18 @@ package Main.ZonaMedica.Personas.Pacientes;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
+import Main.ZonaMedica.Personas.Pacientes.Citas.CitaMedico;
+import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
+import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPrueba;
 import Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedico;
 import Main.ZonaMedica.Personas.Persona;
+import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
+
+import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.*;
+
 public class Paciente extends Persona {
     //attribute
     protected boolean estaIngresado;
@@ -73,9 +81,54 @@ public class Paciente extends Persona {
     public void setHistorialMedico(ArrayList<ExpedienteMedico> historialMedico) {
         this.historialMedico = historialMedico;
     }
-    public void eliminarCita(int numCita){
-        this.citas.remove(numCita);
-        System.out.println("Cita borrada correctamente");
+
+    public void setHistorialMedico(ExpedienteMedico historialMedico) {
+        this.historialMedico.add(historialMedico);
+    }
+    public void mostrarCitas(){
+        int j=1;
+        for(int i=0; this.citas.size() > i; i++){
+            System.out.println(j);
+            System.out.println(this.citas.get(i));
+            j++;
+        }
+    }
+    public void crearCitaPrueba(){
+        this.citas.add(new CitaPrueba(
+                inputFechaCita(),
+                inputHorario(),
+                inputPrueba()
+        ));
+    }
+    public void crearCitaMedico(){
+        UUID id = UUID.randomUUID();
+        Date fechaCita = inputFechaCita();
+        boolean tipoCita = inputTipoCita();
+        PersonalSanitario medico = inputAsignarSanitario();
+
+        medico.addCitas(new CitaPaciente(
+                fechaCita,
+                obtenerHorario(medico),
+                id,
+                tipoCita,
+                this
+        ));
+        this.citas.add(new CitaMedico(
+                fechaCita,
+                obtenerHorario(medico),
+                id,
+                tipoCita,
+                medico,
+                inputUnidadEspecializada()
+        ));
+    }
+    public void mostrarHistorialMedico(){
+        int j=1;
+        for(int i=0; this.historialMedico.size() > i; i++){
+            System.out.println(j);
+            System.out.println(this.historialMedico.get(i));
+            j++;
+        }
     }
 
     @Override

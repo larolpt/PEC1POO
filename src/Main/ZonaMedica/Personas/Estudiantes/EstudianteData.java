@@ -13,26 +13,9 @@ public class EstudianteData {
 
     public static void main(String[] args) {
         generarEstudiantes();
-        mostrarEstudiantes();
     }
 
-    public static void mostrarEstudiantes(){
-        int cont, cont2;
-        System.out.println(String.format("%1$-114s", "-").replace(" ", "-"));
-        for (int i = 0; i < dataEstudiante.size() - 1; i += 2) {
-            cont = i + 1;
-            cont2 = i + 2;
-            System.out.println(
-                    "| " + String.format("%1$-54s", cont + ".-") +
-                            "| " + String.format("%1$-54s", cont2 + ".-") + " |\n" +
-                            "| Nombre: " + String.format("%1$-46s", dataEstudiante.get(i).getNombreCompleto()) +
-                            "| Nombre: " + String.format("%1$-46s", dataEstudiante.get(cont).getNombreCompleto()) + " |\n" +
-                            "| Especialidad: " + String.format("%1$-40s", dataEstudiante.get(i).getNombreUniversidad()) +
-                            "| Especialidad: " + String.format("%1$-40s", dataEstudiante.get(cont).getNombreUniversidad()) + " |"
-            );
-            System.out.println(String.format("%1$-114s", "-").replace(" ", "-"));
-        }
-    }
+
 
     public static void generarEstudiantes(){
         dataEstudiante.add(new Estudiante("Manolo", "Garcia","Garcia","12345678A", new Date(10 / 6 / 2000), 39012, "Calle floranes nº2", 123456789, new PersonalSanitario(), "Universidad de Cantabria"));

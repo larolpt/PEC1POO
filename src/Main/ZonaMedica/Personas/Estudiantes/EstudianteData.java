@@ -1,8 +1,6 @@
 package Main.ZonaMedica.Personas.Estudiantes;
 
-import Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
-import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,12 +8,6 @@ import java.util.Date;
 
 public class EstudianteData {
     public static ArrayList<Estudiante> dataEstudiante = new ArrayList<>();
-
-    public static void main(String[] args) {
-        generarEstudiantes();
-    }
-
-
 
     public static void generarEstudiantes(){
         dataEstudiante.add(new Estudiante("Manolo", "Garcia","Garcia","12345678A", new Date(10 / 6 / 2000), 39012, "Calle floranes nº2", 123456789, new PersonalSanitario(), "Universidad de Cantabria"));

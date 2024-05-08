@@ -1,12 +1,7 @@
 package Main.ZonaMedica.Personas.Pacientes;
 
-import Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas;
-import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
-import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
-
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class PacienteData {
     public static ArrayList<Paciente> pacienteData = new ArrayList<>();

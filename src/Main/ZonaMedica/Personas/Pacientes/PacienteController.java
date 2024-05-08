@@ -59,9 +59,9 @@ public class PacienteController extends PersonaController {
             }
         } while (opcion != 0);
     }
-    public static void darAltaPaciente(){
+    public static Paciente darAltaPaciente(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
-        pacienteData.add(new Paciente(
+        Paciente pac = new Paciente(
                 inputNombre(),
                 inputApellido1(),
                 inputApellido2(),
@@ -71,8 +71,9 @@ public class PacienteController extends PersonaController {
                 inputResidencia(),
                 inputTelefono(),
                 inputTieneSeguro()
-                )
         );
+        pacienteData.add(pac);
+        return pac;
     }
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;

@@ -1,7 +1,5 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
-import Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas;
-
 public enum TipoPruebas {
     ANALITICAS(0,50),
     RAYOSX(1,150),

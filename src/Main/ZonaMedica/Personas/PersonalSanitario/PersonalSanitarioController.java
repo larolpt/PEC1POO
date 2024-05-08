@@ -1,19 +1,13 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
 import Main.ZonaMedica.Campus.Unidades.Unidades;
-import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
-import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
-import Main.ZonaMedica.Personas.Pacientes.Paciente;
 import Main.ZonaMedica.Personas.PersonaController;
 
-import java.text.ParseException;
-import java.util.ArrayList;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Unidades.UnidadesData.*;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
-import static Main.ZonaMedica.Personas.PersonalSanitario.ConsultasExternas.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.Turno.*;
 /**
@@ -250,9 +244,6 @@ public class PersonalSanitarioController extends PersonaController {
         unidad = inputUnidadesMap();//Primero obtenemos una de las unidades mas generales
 
         switch (unidad) {//Si la unidad tiene subunidades te hara elegir con las opciones correspondiente en cada caso.
-            case "Pruebas medicas":
-                subUnidad = inputTipoPruebas();
-                break;
             case "Unidades especializadas":
                 subUnidad = inputEnfermedadesComunes();
                 break;

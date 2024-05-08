@@ -1,11 +1,17 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
 import Main.ZonaMedica.Campus.Unidades.Unidades;
+import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
+import Main.ZonaMedica.Personas.Pacientes.Citas.CitaMedico;
 import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
 import Main.ZonaMedica.Personas.Persona;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.*;
+
+import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.ingresarPaciente;
+import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.inputPrueba;
+import static Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedicoController.*;
 
 
 public class PersonalSanitario extends Persona {
@@ -75,6 +81,105 @@ public class PersonalSanitario extends Persona {
 
     public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
+    }
+
+    public void mostrarCitas(){
+        for(CitaPaciente c: this.citas){
+            if (c.getDia().equals(new Date()) || c.getDia().after(new Date())){
+                System.out.println(c);
+            }
+        }
+    }
+    public void pasarConsultaMedico(){
+        Scanner input = new Scanner(System.in);
+
+        Queue<CitaPaciente> consultasHoy = new LinkedList<>();
+        if(!this.citas.isEmpty()){
+            for(CitaPaciente c: this.citas){
+                if (c.getDia().equals(new Date()) && !c.isEstaPasada()){
+                    consultasHoy.add(c);
+                }
+            }
+            if (!consultasHoy.isEmpty()) {
+                CitaPaciente consulta = consultasHoy.poll();
+                System.out.println("Paciente: " + consulta.getPacienteAsignado().getNombreCompleto());
+                System.out.println("Elige una opción:");
+                System.out.println("1. Hospitalizar al paciente");
+                System.out.println("2. Realizar pruebas");
+                System.out.println("3. No hacer nada");
+                System.out.print("Opción: ");
+                int opcion = input.nextInt();
+                switch (opcion) {
+                    case 1:
+                        ingresarPaciente(consulta.getPacienteAsignado());
+                        break;
+                    case 2:
+                        consulta.getPacienteAsignado().crearCitaPrueba();
+                        break;
+                    case 3:
+                        System.out.println("No se realiza ninguna acción.");
+                        break;
+                    default:
+                        System.out.println("Opción no válida.");
+                }
+                consulta.getPacienteAsignado().setHistorialMedico(crearExpediente());//Despues de pasar la consulta modificara su expediente medico
+                consulta.setEstaPasada(true);
+            } else {
+                System.out.println("Ya no hay mas citas.");
+            }
+        }else{
+            System.out.println("No tienes citas para pasar");
+        }
+    }
+    public void pasarConsultaEnfermeria(){
+        Scanner input = new Scanner(System.in);
+
+        Queue<CitaPaciente> consultasHoy = new LinkedList<>();
+        if(!this.citas.isEmpty()){
+            for(CitaPaciente c: this.citas){
+                if (c.getDia().equals(new Date()) && !c.isEstaPasada()){
+                    consultasHoy.add(c);
+                }
+            }
+            if (!consultasHoy.isEmpty()) {
+                CitaPaciente consulta = consultasHoy.poll();
+                System.out.println("Paciente: " + consulta.getPacienteAsignado().getNombreCompleto());
+                System.out.println("Elige una opción:");
+                System.out.println("1. Ver tratamientos");
+                System.out.println("2. Realizar tratamientos");
+                System.out.println("3. No hacer nada");
+                System.out.print("Opción: ");
+                int opcion = input.nextInt();
+                switch (opcion) {
+                    case 1:
+                        consulta.getPacienteAsignado().mostrarHistorialMedico();
+                        break;
+                    case 2:
+                        consulta.getPacienteAsignado().setHistorialMedico(modificarExpediente(getExpedienteMedico(consulta.getPacienteAsignado())));
+                        break;
+                    case 3:
+                        System.out.println("No se realiza ninguna acción.");
+                        break;
+                    default:
+                        System.out.println("Opción no válida.");
+                }
+                consulta.setEstaPasada(true);
+            } else {
+                System.out.println("Ya no hay mas citas.");
+            }
+        }else{
+            System.out.println("No tienes citas para pasar");
+        }
+    }
+    public void pasarConsulta(){
+        if(this.unidad.equals(new Unidades("Enfermeria",""))){
+            this.pasarConsultaEnfermeria();
+        } else if (this.unidad.equals(new Unidades("Urgencias",""))) {
+
+        }else{
+            this.pasarConsultaMedico();
+        }
+
     }
 
 

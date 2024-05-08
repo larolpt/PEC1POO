@@ -57,7 +57,6 @@ public class EstudianteController extends PersonaController {
 
     public static void menuEstudiante(){
         int opcion;
-        generarEstudiantes();
         do {
             System.out.println("=======================================");
             System.out.println("         MENU ESTUDIANTES    ");
@@ -187,18 +186,8 @@ public class EstudianteController extends PersonaController {
     public static void mostrarEstudiantes(){
         int cont, cont2;
         System.out.println(String.format("%1$-114s", "-").replace(" ", "-"));
-        for (int i = 0; i < dataEstudiante.size() - 1; i += 2) {
-            cont = i + 1;
-            cont2 = i + 2;
-            System.out.println(
-                    "| " + String.format("%1$-54s", cont + ".-") +
-                            "| " + String.format("%1$-54s", cont2 + ".-") + " |\n" +
-                            "| Nombre: " + String.format("%1$-46s", dataEstudiante.get(i).getNombreCompleto()) +
-                            "| Nombre: " + String.format("%1$-46s", dataEstudiante.get(cont).getNombreCompleto()) + " |\n" +
-                            "| Especialidad: " + String.format("%1$-40s", dataEstudiante.get(i).getNombreUniversidad()) +
-                            "| Especialidad: " + String.format("%1$-40s", dataEstudiante.get(cont).getNombreUniversidad()) + " |"
-            );
-            System.out.println(String.format("%1$-114s", "-").replace(" ", "-"));
+        for (Estudiante p: dataEstudiante){
+            System.out.println(p);
         }
     }
     public static String inputUniversidad(){//Input para introducir el nombre d ela universidad.
@@ -206,7 +195,7 @@ public class EstudianteController extends PersonaController {
         return input.nextLine().trim();
     }
     public static PersonalSanitario inputAsignarSanitario(){//Se le asigna el Medico con el que puede ver las consultas.
-        mostrarPersonal();//Se muestran todos los medicos que hay para elegir.
+        mostrarPersonalEstudiantes();//Se muestran todos los medicos que hay para elegir.
         int registro = 0;
         PersonalSanitario persona = null;
         try{
@@ -251,15 +240,18 @@ public class EstudianteController extends PersonaController {
     }
 
     public static void mostrarPersonalEstudiantes(){
+        int x = 1;
         if(dataPersonalSanitario.isEmpty()){
             System.out.println("No hay personal medico");
         }else{
             for(PersonalSanitario p: dataPersonalSanitario){
                 if(p.getUnidades().equals(new Unidades("Unidad de formación",""))){
+                    System.out.println(x);
                     System.out.println(p.getNombreCompleto());
                     System.out.println(p.getTurno());
                     System.out.println(p.getUnidades());
                 }
+                x++;
             }
         }
     }

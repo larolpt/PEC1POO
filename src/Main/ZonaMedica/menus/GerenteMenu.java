@@ -11,8 +11,10 @@ import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.generarHabitaciones;
 import static Main.ZonaMedica.Campus.Unidades.UnidadesData.generarUnidades;
+import static Main.ZonaMedica.Personas.Estudiantes.EstudianteData.generarEstudiantes;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.generarDatosPaciente;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.generarDatosPersonalSanitario;
+import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
 
 public class GerenteMenu {
     public static void main(String[] args) {
@@ -20,6 +22,8 @@ public class GerenteMenu {
         generarHabitaciones();
         generarDatosPaciente();
         generarUnidades();
+        generarEstudiantes();
+        menuPersonalSanitario();
         menu();
     }
 

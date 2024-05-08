@@ -70,7 +70,7 @@ public class Paciente extends Persona {
         this.citas = citas;
     }
 
-    public void setCitas(Cita citas) {
+    public void setCitas(CitaMedico citas) {
         this.citas.add(citas);
     }
 
@@ -101,26 +101,29 @@ public class Paciente extends Persona {
         ));
     }
     public void crearCitaMedico(){
-        UUID id = UUID.randomUUID();
-        Date fechaCita = inputFechaCita();
-        boolean tipoCita = inputTipoCita();
         PersonalSanitario medico = inputAsignarSanitario();
+        if(medico != null){
+            UUID id = UUID.randomUUID();
+            Date fechaCita = inputFechaCita();
+            boolean tipoCita = inputTipoCita();
 
-        medico.addCitas(new CitaPaciente(
-                fechaCita,
-                obtenerHorario(medico),
-                id,
-                tipoCita,
-                this
-        ));
-        this.citas.add(new CitaMedico(
-                fechaCita,
-                obtenerHorario(medico),
-                id,
-                tipoCita,
-                medico,
-                inputUnidadEspecializada()
-        ));
+            medico.addCitas(new CitaPaciente(
+                    fechaCita,
+                    obtenerHorario(medico),
+                    id,
+                    tipoCita,
+                    this
+            ));
+            this.citas.add(new CitaMedico(
+                    fechaCita,
+                    obtenerHorario(medico),
+                    id,
+                    tipoCita,
+                    medico
+            ));
+        }else{
+            System.out.println("No se puede crear ya que no hay ningun medico.");
+        }
     }
     public void mostrarHistorialMedico(){
         int j=1;

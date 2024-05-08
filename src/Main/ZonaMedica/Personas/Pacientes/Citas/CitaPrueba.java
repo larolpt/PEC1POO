@@ -17,7 +17,7 @@ public class CitaPrueba extends Cita {
     }
 
     public CitaPrueba(Date dia, boolean hora, TipoPruebas prueba) {
-        super(dia, hora);
+        super(dia, hora, false);
         this.prueba = prueba;
     }
 

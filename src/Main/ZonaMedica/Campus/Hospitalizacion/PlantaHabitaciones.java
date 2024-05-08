@@ -141,6 +141,18 @@ public class PlantaHabitaciones {
             }
         }
     }
+
+    public static void ingresarPaciente(Paciente paciente){
+        paciente.setEstaIngresado(true);
+        System.out.println("Introduce a que se debe el ingreso del paciente: ");
+        String motivo = input.nextLine();//Se introduce el motivo del ingreso
+        for(int i=0; habitaciones.length > i; i++){
+            if(!habitaciones[i].isOcupada()){//Si esta vacia se le asigna la primera habitación vacia que encuentre.
+                habitaciones[i].insertPacienteHabitacion(paciente, motivo);// se inserta el paciente y erl motivo del ingreso
+                break;
+            }
+        }
+    }
     public static Paciente inputPaciente(){
         int numPaciente = -1;
         Paciente pacienteElegido = null;

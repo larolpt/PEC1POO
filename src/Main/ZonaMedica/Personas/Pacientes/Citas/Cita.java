@@ -13,17 +13,20 @@ public class Cita{
      Si el tipo == false cita por la tarde
      **/
     protected boolean horario;
+    protected boolean estaPasada;
 
     //builder
 
-    public Cita(Date dia, boolean horario) {
+    public Cita(Date dia, boolean horario, boolean estaPasada) {
         this.dia = dia;
         this.horario = horario;
+        this.estaPasada = estaPasada;
     }
 
     public Cita(){
-        dia = null;
-        horario = false;
+        this.dia = null;
+        this.horario = false;
+        this.estaPasada = false;
     }
 
 
@@ -43,6 +46,14 @@ public class Cita{
 
     public void setHorario(boolean horario) {
         this.horario = horario;
+    }
+
+    public boolean isEstaPasada() {
+        return estaPasada;
+    }
+
+    public void setEstaPasada(boolean estaPasada) {
+        this.estaPasada = estaPasada;
     }
 
     @Override

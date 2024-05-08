@@ -21,7 +21,7 @@ public class CitaPaciente extends Cita {
     //builder
 
     public CitaPaciente(Date dia, boolean hora,UUID id, boolean tipo, Paciente pacienteAsignado) {
-        super(dia, hora);
+        super(dia, hora, false);
         this.id = id;
         this.tipo = tipo;
         this.pacienteAsignado = pacienteAsignado;

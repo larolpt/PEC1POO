@@ -72,10 +72,6 @@ public class PacienteController extends PersonaController {
                 inputTelefono(),
                 inputTieneSeguro()
         );
-        pacData.add(pac);
-        for(Paciente p: pacData){
-            System.out.println(p);
-        }
     }
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;
@@ -129,6 +125,9 @@ public class PacienteController extends PersonaController {
     }
     public static void mostrarPacientes(){
         for(int i=0; i < pacData.size(); i++) {
+            System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                    "║                              Número del paciente: "+ i +"                        ║\n" +
+                    "╠════════════════════════════════════════════════════════════════════════════╣" );
             System.out.print(pacData.get(i));
         }
     }
@@ -175,8 +174,7 @@ public class PacienteController extends PersonaController {
         try{
             mostrarPacientes();
             System.out.print("Indique el número del registro del paciente que quiera elegir: ");
-            registro = input.nextInt()-1;
-            input.nextLine();
+            registro = input.nextInt();
             paciente = pacData.get(registro);
         }catch (InputMismatchException e){
             System.out.println("Error: Introduzca un valor numerico solo. ");

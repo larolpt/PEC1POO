@@ -1,5 +1,8 @@
 package Main.ZonaMedica.Personas.Pacientes;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -87,10 +90,14 @@ public class Paciente extends Persona {
     }
     public void mostrarCitas(){
         int j=1;
-        for(int i=0; this.citas.size() > i; i++){
-            System.out.println(j);
-            System.out.println(this.citas.get(i));
-            j++;
+        if(citas.isEmpty()){
+            System.out.println("No tienes citas registradas");
+        }else{
+            for(int i=0; this.citas.size() > i; i++){
+                System.out.println(j);
+                System.out.println(this.citas.get(i));
+                j++;
+            }
         }
     }
     public void crearCitaPrueba(){
@@ -136,19 +143,14 @@ public class Paciente extends Persona {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "estaIngresado=" + estaIngresado +
-                ", tieneSeguro=" + tieneSeguro +
-                ", citas=" + citas +
-                ", historialMedico=" + historialMedico +
-                ", nombre='" + nombre + '\'' +
-                ", primerApellido='" + primerApellido + '\'' +
-                ", segundoApellido='" + segundoApellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fNacimiento=" + fNacimiento +
-                ", codigoPostal=" + codigoPostal +
-                ", lugarResidencia='" + lugarResidencia + '\'' +
-                ", teléfono='" + telefono + '\'' +
-                '}';
+        return "╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                              PACIENTE                                      ║\n" +
+                "╠════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ Nombre: " + String.format("%1$-35s", getNombreCompleto()) + "║ DNI: " + String.format("%1$-25s", dni) + "║\n" +
+                "║ Dirección: " + String.format("%1$-32s", lugarResidencia) + "║ Teléfono: " + String.format("%1$-20s", telefono) + "║\n" +
+                "║ Fecha de Nacimiento: " + String.format("%1$-22s", formatearFecha(fNacimiento)) + "║ Código Postal: " + String.format("%1$-15s", codigoPostal) + "║\n" +
+                "║ Seguro Médico: " + String.format("%1$-28s", (isTieneSeguro() ? "Sí" : "No")) + "║ Esta ingresado: " + String.format("%1$-14s", (isEstaIngresado() ? "Sí" : "No")) + "║\n" +
+                "╚════════════════════════════════════════════════════════════════════════════╝\n";
     }
+
 }

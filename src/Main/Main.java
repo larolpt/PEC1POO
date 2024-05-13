@@ -26,12 +26,15 @@ import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(new Date());
         generarDatosPersonalSanitario();
         generarHabitaciones();
         generarUnidades();
         generarEstudiantes();
+        genDatosPaciente();
         mainMenu();
     }
+
 
     public static void mainMenu(){
         Scanner input = new Scanner(System.in);

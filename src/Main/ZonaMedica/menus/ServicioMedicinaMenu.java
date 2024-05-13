@@ -4,6 +4,7 @@ import Main.ZonaMedica.Campus.Contabilidad.Contabilidad;
 import Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones;
 import Main.ZonaMedica.Campus.Unidades.Unidades;
 import Main.ZonaMedica.Personas.Estudiantes.EstudianteController;
+import Main.ZonaMedica.Personas.Pacientes.Paciente;
 import Main.ZonaMedica.Personas.Pacientes.PacienteController;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController;
@@ -12,6 +13,7 @@ import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Urgencias.UrgenciasData.mostrarCola;
 import static Main.ZonaMedica.Campus.Urgencias.UrgenciasData.pasarConsulta;
+import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.dataPersonalSanitario;
 
 public class ServicioMedicinaMenu {
@@ -93,18 +95,17 @@ public class ServicioMedicinaMenu {
         String dni;
         PersonalSanitario medico = null;
         System.out.print("Introduce tu dni para identificarte: ");
-        dni = input.nextLine().trim().toUpperCase();
+        dni = input.nextLine().toUpperCase().trim();
         if(!dni.matches("\\d{8}[A-HJ-NP-TV-Z]")){//Se comprueba con una expresion regular si el dni esta en el formato correcto español
             System.out.println("Formato del dni no aceptado formato debe ser(12345678X)");
             identificarMedico();
+        } else if (pacData.isEmpty()) {
+            System.out.println("No hay pacientes en el sistema.");
         }
-        for(PersonalSanitario p:  dataPersonalSanitario){
+        for(PersonalSanitario p: dataPersonalSanitario){
             if(p.getDni().equalsIgnoreCase(dni)){
                 medico = p;
                 break;
-            }else{
-                System.out.println("No estas en el sistema");
-                input.nextLine();
             }
         }
         return medico;

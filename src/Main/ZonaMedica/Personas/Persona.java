@@ -1,5 +1,6 @@
 package Main.ZonaMedica.Personas;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Persona {
@@ -111,5 +112,10 @@ public class Persona {
                 ", lugarResidencia='" + lugarResidencia + '\'' +
                 ", telefono=" + telefono +
                 '}';
+    }
+
+    protected String formatearFecha(Date fecha) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(fecha);
     }
 }

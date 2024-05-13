@@ -53,36 +53,30 @@ public class CitaController {
         int numCita = -1;
         Cita cita = null;
         paciente.mostrarCitas();
-        try{
-            System.out.println("Elija la cita que quiere eliminar: ");
-            numCita =  input.nextInt()-1;
-            cita = paciente.getCitas().get(numCita); //Cita que quiere borrar el usuario
-            if(cita instanceof CitaPrueba){//Si la cita que se tiene es eliminada el coste de esta se restara a las ganancias ya que no esta hecha.
-                Contabilidad.ingresosHospital -=((CitaPrueba) cita).getPrueba().getCoste();
+        if(!paciente.getCitas().isEmpty()){
+            try{
+                System.out.println("Elija la cita que quiere eliminar: ");
+                numCita =  input.nextInt()-1;
+                cita = paciente.getCitas().get(numCita); //Cita que quiere borrar el usuario
+                if(cita instanceof CitaPrueba){//Si la cita que se tiene es eliminada el coste de esta se restara a las ganancias ya que no esta hecha.
+                    Contabilidad.ingresosHospital -=((CitaPrueba) cita).getPrueba().getCoste();
 
-            }
-            if(cita instanceof CitaMedico){//Comprobamos si es una cita para el medico para borrar tambien la lista del medico
-                for (int i=0 ; ((CitaMedico) cita).getMedicoAsignado().getCitas().size()-1 > i ; i++){
-                    if(((CitaMedico) cita).getMedicoAsignado().getCitas().get(i).getId().equals((cita).getId())){//Se compara el id de las dos citas y si es igual se borra de la lista del medico
-                        ((CitaMedico) cita).getMedicoAsignado().getCitas().remove(i);
-                        break;
+                }
+                if(cita instanceof CitaMedico){//Comprobamos si es una cita para el medico para borrar tambien la lista del medico
+                    for (int i=0 ; ((CitaMedico) cita).getMedicoAsignado().getCitas().size()-1 > i ; i++){
+                        if(((CitaMedico) cita).getMedicoAsignado().getCitas().get(i).getId().equals((cita).getId())){//Se compara el id de las dos citas y si es igual se borra de la lista del medico
+                            ((CitaMedico) cita).getMedicoAsignado().getCitas().remove(i);
+                            break;
+                        }
                     }
                 }
+                paciente.getCitas().remove(numCita);
+                System.out.println("Borrado correctamente la cita");
+            }catch(Exception e){
+                System.out.println("Error: Introduce un numero o un numero asignado a la lista: ");
             }
-            paciente.getCitas().remove(numCita);
-            System.out.println("Borrado correctamente la cita");
-        }catch(Exception e){
-            System.out.println("Error: Introduce un numero o un numero asignado a la lista: ");
-        }
-    }
-    private static void mostrarCitaPaciente(Paciente paciente) {
-        if(paciente.getCitas().isEmpty()){
-            System.out.println("No hay citas en el paciente");
         }else{
-            for(int i=1; paciente.getCitas().size() > i; i++){
-                System.out.println(i);
-                System.out.println(paciente.getCitas().get(i));
-            }
+            System.out.println("ERROR: No tienes citas para borrar");
         }
     }
     public static TipoPruebas inputPrueba(){
@@ -122,6 +116,7 @@ public class CitaController {
     public static Date inputFechaCita(){
         String fecha;
         Date fechaCita = null;
+        input.nextLine();
         System.out.print("Introduce la fecha para la cita en formato dd/MM/yyyy: ");
         fecha = input.nextLine().trim();
 
@@ -129,8 +124,10 @@ public class CitaController {
             fechaCita = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
             String[] partes = fecha.split("/");
             LocalDate.of(Integer.parseInt(partes[2]), Integer.parseInt(partes[1]), Integer.parseInt(partes[0]));
-            if(fechaCita.before(new Date())){
-                System.out.println("No puedes asignar fechas pasadas a las citas ni en el dia de hoy.");
+            if(fechaCita.after(new Date()) || fechaCita.getDay() == new Date().getDay()){
+
+            }else{
+                System.out.println("No puedes asignar fechas pasadas a las citas.");
                 inputFechaCita();
             }
         } catch (ParseException e) {
@@ -163,7 +160,17 @@ public class CitaController {
         return isActive;
     }
     public static PersonalSanitario inputAsignarSanitario(){//Se le asigna el Medico con el que puede ver las consultas.//Se muestran todos los medicos que hay para elegir.
-        return  inputPersonalUnidad(elegirUnidadCita());
+        Unidades u = elegirUnidadCita();
+        PersonalSanitario p = inputPersonalUnidad(u);
+
+        if(p.getUnidades().equals(u)){
+            return p;
+        }else{
+            System.out.println("ERROR: El medico elegido no pertenece a la unidad elegida");
+            inputAsignarSanitario();
+        }
+
+        return p;
     }
     private static PersonalSanitario inputPersonalUnidad(Unidades unidad) {
         int x = 1;

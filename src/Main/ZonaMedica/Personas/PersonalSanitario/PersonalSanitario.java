@@ -85,7 +85,7 @@ public class PersonalSanitario extends Persona {
 
     public void mostrarCitas(){
         for(CitaPaciente c: this.citas){
-            if (c.getDia().equals(new Date()) || c.getDia().after(new Date())){
+            if (c.getDia().equals(new Date()) || c.getDia().before(new Date())){
                 System.out.println(c);
             }
         }
@@ -96,7 +96,7 @@ public class PersonalSanitario extends Persona {
         Queue<CitaPaciente> consultasHoy = new LinkedList<>();
         if(!this.citas.isEmpty()){
             for(CitaPaciente c: this.citas){
-                if (c.getDia().equals(new Date()) && !c.isEstaPasada()){
+                if (c.getDia().getDay() == new Date().getDay() && !c.isEstaPasada()){
                     consultasHoy.add(c);
                 }
             }
@@ -174,8 +174,6 @@ public class PersonalSanitario extends Persona {
     public void pasarConsulta(){
         if(this.unidad.equals(new Unidades("Enfermeria",""))){
             this.pasarConsultaEnfermeria();
-        } else if(this.unidad.equals(new Unidades("UCI",""))) {
-
         }else{
             this.pasarConsultaMedico();
         }
@@ -185,19 +183,14 @@ public class PersonalSanitario extends Persona {
 
     @Override
     public String toString() {
-        return "PersonalSanitario{" +
-                "especialidad=" + unidad +
-                ", turno=" + turno +
-                ", citas=" + citas +
-                ", sueldo=" + sueldo +
-                ", nombre='" + nombre + '\'' +
-                ", primerApellido='" + primerApellido + '\'' +
-                ", segundoApellido='" + segundoApellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fNacimiento=" + fNacimiento +
-                ", codigoPostal=" + codigoPostal +
-                ", lugarResidencia='" + lugarResidencia + '\'' +
-                ", telefono=" + telefono +
-                '}';
+        return "╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                              PERSONAL SANITARIO                            ║\n" +
+                "╠════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ Nombre: " + String.format("%1$-35s", getNombreCompleto()) + "║ DNI: " + String.format("%1$-25s", dni) + "║\n" +
+                "║ Dirección: " + String.format("%1$-32s", lugarResidencia) + "║ Teléfono: " + String.format("%1$-20s", telefono) + "║\n" +
+                "║ Fecha de Nacimiento: " + String.format("%1$-22s", formatearFecha(fNacimiento)) + "║ Código Postal: " + String.format("%1$-15s", codigoPostal) + "║\n" +
+                "║ Unidad: " + String.format("%1$-35s", getUnidades().getNombreUnidad()) + "║ Turno: " + String.format("%1$-23s", turno) + "║\n" +
+                "║ Subunidad: " + String.format("%1$-32s", getUnidades().getSubunidad().isEmpty() ? "No tiene subunidad":getUnidades().getSubunidad()) + "║ Sueldo: " + String.format("%1$-22s", sueldo + "€") + "║\n" +
+                "╚════════════════════════════════════════════════════════════════════════════╝\n";
     }
 }

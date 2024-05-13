@@ -194,32 +194,8 @@ public class PersonalSanitarioController extends PersonaController {
         }
     }
     public static void mostrarPersonal(){
-        if(dataPersonalSanitario.isEmpty()){
-            System.out.println("No hay personal Sanitario");
-        }else if(dataPersonalSanitario.size() == 1){//Comprobamos que si solo hay un registro se muestre solo para que no de error
-            System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
-            System.out.println(
-                    "| " + String.format("%1$-36s", 1 + ".-") + " |\n" +
-                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(1).getNombreCompleto()) + " |\n" +
-                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(1).getUnidades())
-            );
-            System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
-        }else{
-            int cont, cont2;
-            System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
-            for (int i = 0; i < dataPersonalSanitario.size() - 1; i += 2) {
-                cont = i + 1;
-                cont2 = i + 2;
-                System.out.println(
-                        "| " + String.format("%1$-36s", cont + ".-") +
-                                "| " + String.format("%1$-36s", cont2 + ".-") + " |\n" +
-                                "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(i).getNombreCompleto()) +
-                                "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(cont).getNombreCompleto()) + " |\n" +
-                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(i).getUnidades()) +
-                                "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(cont).getUnidades()) + " |"
-                );
-                System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
-            }
+        for(PersonalSanitario p: dataPersonalSanitario){
+            System.out.println(p);
         }
     }
     public static void mostrarAtributos(){

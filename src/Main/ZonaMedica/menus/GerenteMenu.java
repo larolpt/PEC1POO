@@ -9,16 +9,6 @@ import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController;
 
 import java.util.Scanner;
 
-import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.generarHabitaciones;
-import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.menuHospitalizacion;
-import static Main.ZonaMedica.Campus.Unidades.UnidadesData.generarUnidades;
-import static Main.ZonaMedica.Personas.Estudiantes.EstudianteData.generarEstudiantes;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteData.genDatosPaciente;
-//import static Main.ZonaMedica.Personas.Pacientes.PacienteData.generarDatosPaciente;
-import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.generarDatosPersonalSanitario;
-import static Main.ZonaMedica.menus.PacienteMenu.pacienteMenu;
-import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
-
 public class GerenteMenu {
 
     public static void menuGerentes(){

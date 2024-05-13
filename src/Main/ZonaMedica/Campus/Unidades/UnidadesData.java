@@ -21,11 +21,11 @@ public class UnidadesData {
             dataUnidadesMap.put(6, "Consultas externas");
 
 
-            // Datos para enfermedades comunes
+            // Subunidades para eunidades especializas
             enfermedadesComunesMap.put(1, "Enfermedades Cardiovasculares");
             enfermedadesComunesMap.put(2, "Diabetes");
 
-            // Datos para consultas externas
+            // Subunidades para consultas externas
 
             consultasExternasMap.put(1, "Aparato Digestivo");
             consultasExternasMap.put(2, "Cardiología");

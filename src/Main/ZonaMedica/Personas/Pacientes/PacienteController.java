@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.*;
 import static Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedicoController.menuExpediente;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
+import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.dataPersonalSanitario;
 
 public class PacienteController extends PersonaController {
@@ -59,7 +59,7 @@ public class PacienteController extends PersonaController {
             }
         } while (opcion != 0);
     }
-    public static Paciente darAltaPaciente(){
+    public static void darAltaPaciente(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
         Paciente pac = new Paciente(
                 inputNombre(),
@@ -72,8 +72,10 @@ public class PacienteController extends PersonaController {
                 inputTelefono(),
                 inputTieneSeguro()
         );
-        pacienteData.add(pac);
-        return pac;
+        pacData.add(pac);
+        for(Paciente p: pacData){
+            System.out.println(p);
+        }
     }
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;
@@ -123,11 +125,11 @@ public class PacienteController extends PersonaController {
         } while (opcion != 0);
     }
     public static void eliminarPaciente(){
-        pacienteData.remove(getPaciente());
+        pacData.remove(getPaciente());
     }
     public static void mostrarPacientes(){
-        for(int i=0; i < pacienteData.size(); i++) {
-            System.out.print(pacienteData.get(i));
+        for(int i=0; i < pacData.size(); i++) {
+            System.out.print(pacData.get(i));
         }
     }
     public static void mostrarAtributos(){
@@ -175,7 +177,7 @@ public class PacienteController extends PersonaController {
             System.out.print("Indique el número del registro del paciente que quiera elegir: ");
             registro = input.nextInt()-1;
             input.nextLine();
-            paciente = pacienteData.get(registro);
+            paciente = pacData.get(registro);
         }catch (InputMismatchException e){
             System.out.println("Error: Introduzca un valor numerico solo. ");
             input.nextLine();

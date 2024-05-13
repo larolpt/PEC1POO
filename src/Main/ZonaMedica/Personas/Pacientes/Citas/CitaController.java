@@ -201,6 +201,7 @@ public class CitaController {
         System.out.println("2. Consultas externas");
         System.out.println("3. Unidad de formación");
         System.out.println("4. Enfermeria");
+        System.out.println("5. UCI");
         //Primero obtenemos una de las unidades mas generales
         System.out.println("Eliga una unidad para la cita: ");
         opcion = input.nextInt();
@@ -216,9 +217,15 @@ public class CitaController {
             case 3:
                 subUnidad = "";
                 unidad = "Unidad de formación";
+                break;
             case 4:
                 subUnidad = "";
                 unidad = "Enfermeria";
+                break;
+            case 5:
+                subUnidad = "";
+                unidad = "UCI";
+                break;
             default:
                 System.out.println("No existe esta opcion");
                 elegirUnidadCita();

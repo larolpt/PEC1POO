@@ -16,21 +16,25 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.d
 
 public class ServicioMedicinaMenu {
     public static Scanner input = new Scanner(System.in);
-    public static void menuPersonalSanitario(){
+    public static void menuPersonalSanitario() {
         PersonalSanitario medico = identificarMedico();
-        if (medico.getUnidades().equals(new Unidades("UCI",""))) {
+        if(medico == null){
 
-        } else if (medico.getUnidades().equals(new Unidades("Urgencias",""))) {
+        }else if (medico.getUnidades().equals(new Unidades("Urgencias",""))) {
             menuUrgencias();
         }else{
             menuMedico(medico);
         }
     }
+
+
     public static void menuMedico(PersonalSanitario medico){
         int opcion;
         do {
             // Mostrar el menú
-            System.out.println("Menú:");
+            System.out.println("=======================================");
+            System.out.println("             MENU DE MEDICOS         ");
+            System.out.println("=======================================");
             System.out.println("1. Consultar mis citas.");
             System.out.println("2. Pasar consulta.");
             System.out.println("0. Salir");
@@ -58,7 +62,9 @@ public class ServicioMedicinaMenu {
         int opcion;
         do {
             // Mostrar el menú
-            System.out.println("Menú:");
+            System.out.println("=======================================");
+            System.out.println("        MENU DE MEDICOS URGENCIAS ");
+            System.out.println("=======================================");
             System.out.println("1. Consultar cola urgencias.");
             System.out.println("2. Pasar consulta.");
             System.out.println("0. Salir");
@@ -93,12 +99,12 @@ public class ServicioMedicinaMenu {
             identificarMedico();
         }
         for(PersonalSanitario p:  dataPersonalSanitario){
-            if(p.getDni().equals(dni)){
+            if(p.getDni().equalsIgnoreCase(dni)){
                 medico = p;
                 break;
             }else{
                 System.out.println("No estas en el sistema");
-
+                input.nextLine();
             }
         }
         return medico;

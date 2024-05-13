@@ -174,7 +174,7 @@ public class PersonalSanitario extends Persona {
     public void pasarConsulta(){
         if(this.unidad.equals(new Unidades("Enfermeria",""))){
             this.pasarConsultaEnfermeria();
-        } else if (this.unidad.equals(new Unidades("Urgencias",""))) {
+        } else if(this.unidad.equals(new Unidades("UCI",""))) {
 
         }else{
             this.pasarConsultaMedico();

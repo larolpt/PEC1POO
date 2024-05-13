@@ -9,15 +9,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Personas.Pacientes.PacienteController.*;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
+import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
+//import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
 
 public class PlantaHabitaciones {
     public static Habitacion[] habitaciones = new Habitacion[90];
 
-    public static void main(String[] args) {
-        generarHabitaciones();
-        menuHospitalizacion();
-    }
     public static void menuHospitalizacion() {
         int opcion;
         do {
@@ -101,7 +98,6 @@ public class PlantaHabitaciones {
         }
     }
     public static void generarHabitaciones(){
-
         for(int i = 0; habitaciones.length > i; i++){
             habitaciones[i] = new Habitacion(i+1);
         }
@@ -162,10 +158,10 @@ public class PlantaHabitaciones {
             System.out.print("Introduce el numero del paciente que quieras ingresar: ");
             numPaciente = input.nextInt()-1;
             input.nextLine();
-            if(pacienteData.get(numPaciente).isEstaIngresado()){//Comprobamos que el paciente elegido no este ingresado
+            if(pacData.get(numPaciente).isEstaIngresado()){//Comprobamos que el paciente elegido no este ingresado
                 throw new InputMismatchException();//lanzamos una excepcion si esta ingresado ya
             }
-            pacienteElegido = pacienteData.get(numPaciente);
+            pacienteElegido = pacData.get(numPaciente);
         }catch (InputMismatchException | IndexOutOfBoundsException e){
             System.out.println("Error: Este paciente no existe o esta ya ingresado.");
             input.nextLine();
@@ -174,9 +170,9 @@ public class PlantaHabitaciones {
         return pacienteElegido;
     }
     public static void mostrarPacientesNoIngresados(){
-        for(int i=0; i < pacienteData.size(); i++) {
-            if(!pacienteData.get(i).isEstaIngresado()){//Se filtran los pacientes que no estan ingresados
-                System.out.println(i+1 + " " + pacienteData.get(i));
+        for(int i=0; i < pacData.size(); i++) {
+            if(!pacData.get(i).isEstaIngresado()){//Se filtran los pacientes que no estan ingresados
+                System.out.println(i+1 + " " + pacData.get(i));
             }
         }
     }

@@ -12,16 +12,14 @@ import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.ingresarPaciente;
 import static Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedicoController.*;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteController.darAltaPaciente;
-import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacienteData;
 
 
 public class UrgenciasData {
     public static Queue<Urgencias> urgenciasData = new LinkedList<>();
     public static Scanner input = new Scanner(System.in);
 
-    public static void irUrgencias(){
-        urgenciasData.add(new Urgencias(indentificarPaciente(),inputProblema()));
+    public static void irUrgencias(Paciente paciente){
+        urgenciasData.add(new Urgencias(paciente,inputProblema()));
     }
     public static String inputProblema() {
         System.out.println("Describe el problema que tienes: ");
@@ -67,26 +65,4 @@ public class UrgenciasData {
             System.out.println(u);
         }
     }
-    public static Paciente indentificarPaciente(){
-        String dni;
-        Paciente paciente = null;
-        System.out.print("Introduce tu dni para identificarte: ");
-        dni = input.nextLine().trim().toUpperCase();
-        if(!dni.matches("\\d{8}[A-HJ-NP-TV-Z]")){//Se comprueba con una expresion regular si el dni esta en el formato correcto español
-            System.out.println("Formato del dni no aceptado formato debe ser(12345678X)");
-            indentificarPaciente();
-        }
-        for(Paciente p: pacienteData){
-            if(p.getDni().equals(dni)){
-                paciente = p;
-                break;
-            }else{
-                System.out.println("No estas en el sistema indentificate con tus datos");
-                darAltaPaciente();
-            }
-        }
-        return paciente;
-    }
-
-
 }

@@ -168,9 +168,6 @@ public class PersonalSanitarioController extends PersonaController {
                 case 11:
                     personal.setSueldo(inputSueldo());
                     break;
-                case 12:
-                    //persona.setCitas(inputCitaPersonal);
-                    break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -203,8 +200,8 @@ public class PersonalSanitarioController extends PersonaController {
             System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
             System.out.println(
                     "| " + String.format("%1$-36s", 1 + ".-") + " |\n" +
-                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.getFirst().getNombreCompleto()) + " |\n" +
-                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.getFirst().getUnidades())
+                            "| Nombre: " + String.format("%1$-28s", dataPersonalSanitario.get(1).getNombreCompleto()) + " |\n" +
+                            "| Especialidad: " + String.format("%1$-22s", dataPersonalSanitario.get(1).getUnidades())
             );
             System.out.println(String.format("%1$-79s", "-").replace(" ", "-"));
         }else{
@@ -233,8 +230,7 @@ public class PersonalSanitarioController extends PersonaController {
         System.out.println(" | 5. Fecha de Nacimiento | | 6. Código Postal   | ");
         System.out.println(" | 7. Residencia          | | 8. Teléfono        | ");
         System.out.println(" | 9. Unidades            | | 10. Turno          | ");
-        System.out.println(" | 11. Sueldo             | | 12. Citas          | ");
-        System.out.println(" | 0. Salir               | |                    | ");
+        System.out.println(" | 11. Sueldo             | | 0. Salir           | ");
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
     }

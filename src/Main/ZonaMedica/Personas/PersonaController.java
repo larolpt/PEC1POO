@@ -26,7 +26,7 @@ public class PersonaController {
     public static String inputDNI(){
         String dni;
         System.out.print("Introduce el dni: ");
-        dni = input.nextLine().trim().toUpperCase();
+        dni = input.nextLine().toUpperCase().trim();
         if(!dni.matches("\\d{8}[A-HJ-NP-TV-Z]")){//Se comprueba con una expresion regular si el dni esta en el formato correcto español
             System.out.println("Formato del dni no aceptado formato debe ser(12345678X)");
             inputDNI();

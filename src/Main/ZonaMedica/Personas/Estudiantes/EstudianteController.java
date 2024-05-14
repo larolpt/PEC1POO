@@ -184,10 +184,13 @@ public class EstudianteController extends PersonaController {
         }
     }
     public static void mostrarEstudiantes(){
-        int cont, cont2;
+        int cont = 1;
         System.out.println(String.format("%1$-114s", "-").replace(" ", "-"));
         for (Estudiante p: dataEstudiante){
+            System.out.println("╔═════════════════════════════════════════════════════════════════════════════════════════╗\n" +
+                    "║                       Numero del Estudiante: "+ cont +"                                         ║");
             System.out.println(p);
+            cont++;
         }
     }
     public static String inputUniversidad(){//Input para introducir el nombre d ela universidad.
@@ -246,10 +249,9 @@ public class EstudianteController extends PersonaController {
         }else{
             for(PersonalSanitario p: dataPersonalSanitario){
                 if(p.getUnidades().equals(new Unidades("Unidad de formación",""))){
-                    System.out.println(x);
-                    System.out.println(p.getNombreCompleto());
-                    System.out.println(p.getTurno());
-                    System.out.println(p.getUnidades());
+                    System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                            "║                       Numero del Personal Sanitario: "+ x +"                    ║");
+                    System.out.println(p);
                 }
                 x++;
             }

@@ -38,16 +38,14 @@ public class Estudiante extends Persona {
     }
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Persona.Estudiantes.Estudiante{" +
-                "sanitarioAsignado=" + sanitarioAsignado +
-                ", nombreUniversidad='" + nombreUniversidad + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", primerApellido='" + primerApellido + '\'' +
-                ", segundoApellido='" + segundoApellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fNacimiento=" + fNacimiento +
-                ", codigoPostal=" + codigoPostal +
-                ", lugarResidencia='" + lugarResidencia + '\'' +
-                '}';
+        return "╔═════════════════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                              ESTUDIANTE                                                 ║\n" +
+                "╠═════════════════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ Nombre: " + String.format("%1$-41s", getNombreCompleto()) + "║ DNI: " + String.format("%1$-32s", dni) + "║\n" +
+                "║ Dirección: " + String.format("%1$-38s", lugarResidencia) + "║ Teléfono: " + String.format("%1$-27s", telefono) + "║\n" +
+                "║ Fecha de Nacimiento: " + String.format("%1$-28s", formatearFecha(fNacimiento)) + "║ Código Postal: " + String.format("%1$-22s", codigoPostal) + "║\n" +
+                "║ Sanitario Asignado: " + String.format("%1$-29s", sanitarioAsignado.getNombreCompleto()) + "║ Universidad: " + String.format("%1$-24s", nombreUniversidad) + "║\n" +
+                "╚═════════════════════════════════════════════════════════════════════════════════════════╝\n";
+
     }
 }

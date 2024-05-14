@@ -194,8 +194,12 @@ public class PersonalSanitarioController extends PersonaController {
         }
     }
     public static void mostrarPersonal(){
+        int i = 1;
         for(PersonalSanitario p: dataPersonalSanitario){
+            System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                    "║                       Numero del Personal Sanitario: "+ i +"                    ║");
             System.out.println(p);
+            i++;
         }
     }
     public static void mostrarAtributos(){

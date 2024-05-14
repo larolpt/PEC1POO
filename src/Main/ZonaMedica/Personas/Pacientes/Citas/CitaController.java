@@ -18,9 +18,9 @@ import static Main.ZonaMedica.Personas.Pacientes.PacienteController.getPaciente;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
 public class CitaController {
 
-    public static Scanner input = new Scanner(System.in);
 
     public static void menuGestionCitasMedicasPacientes() {
+        Scanner input = new Scanner(System.in);
         int opcion;
         Paciente paciente = getPaciente();
         do {
@@ -50,6 +50,7 @@ public class CitaController {
         } while (opcion != 0);
     }
     public static void eliminarCitasPacientes(Paciente paciente){
+        Scanner input = new Scanner(System.in);
         int numCita = -1;
         Cita cita = null;
         paciente.mostrarCitas();
@@ -80,6 +81,7 @@ public class CitaController {
         }
     }
     public static TipoPruebas inputPrueba(){
+        Scanner input = new Scanner(System.in);
         int prueba = 0;
         TipoPruebas pruebaElegida = null;
         mostrarPruebas();//llamada al metodo del enum para mostrar las pruebas
@@ -96,6 +98,7 @@ public class CitaController {
         return pruebaElegida;
     }
     public static boolean inputHorario(){
+        Scanner input = new Scanner(System.in);
         boolean isActive = false;
         boolean isValidInput;
 
@@ -113,35 +116,38 @@ public class CitaController {
         } while (!isValidInput);
         return isActive;
     }
-    public static Date inputFechaCita(){
+    public static Date inputFechaCita() {
+        Scanner in = new Scanner(System.in);
         String fecha;
         Date fechaCita = null;
-        input.nextLine();
         System.out.print("Introduce la fecha para la cita en formato dd/MM/yyyy: ");
-        fecha = input.nextLine().trim();
-
+        fecha = in.nextLine().trim();
         try {
             fechaCita = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
             String[] partes = fecha.split("/");
             LocalDate.of(Integer.parseInt(partes[2]), Integer.parseInt(partes[1]), Integer.parseInt(partes[0]));
-            if(fechaCita.after(new Date()) || fechaCita.getDay() == new Date().getDay()){
-
-            }else{
+            if (fechaCita.after(new Date()) || fechaCita.getDay() == new Date().getDay()) {
+                // La fecha es válida, se devuelve
+                return fechaCita;
+            } else {
                 System.out.println("No puedes asignar fechas pasadas a las citas.");
-                inputFechaCita();
+                // Se llama recursivamente y se guarda el valor devuelto
+                return inputFechaCita();
             }
         } catch (ParseException e) {
             // Manejar una excepción si la entrada no está en el formato esperado
             System.out.println("Error: La fecha ingresada no está en el formato dd/MM/yyyy.");
-            inputFechaCita();
-        }catch (DateTimeException e ){
+            // Se llama recursivamente y se guarda el valor devuelto
+            return inputFechaCita();
+        } catch (DateTimeException e) {
             // Manejar si la fecha introducida es correcta
             System.out.println("Error: La fecha ingresada no es correcta.");
-            inputFechaCita();
+            // Se llama recursivamente y se guarda el valor devuelto
+            return inputFechaCita();
         }
-        return fechaCita;
     }
     public static boolean inputTipoCita(){
+        Scanner input = new Scanner(System.in);
         boolean isActive = false;
         boolean isValidInput;
 
@@ -160,6 +166,7 @@ public class CitaController {
         return isActive;
     }
     public static PersonalSanitario inputAsignarSanitario(){//Se le asigna el Medico con el que puede ver las consultas.//Se muestran todos los medicos que hay para elegir.
+        Scanner input = new Scanner(System.in);
         Unidades u = elegirUnidadCita();
         PersonalSanitario p = inputPersonalUnidad(u);
 
@@ -173,6 +180,7 @@ public class CitaController {
         return p;
     }
     private static PersonalSanitario inputPersonalUnidad(Unidades unidad) {
+        Scanner input = new Scanner(System.in);
         int x = 1;
         int aux = 0;
         PersonalSanitario medico = null;
@@ -181,13 +189,10 @@ public class CitaController {
         }else{
             for(PersonalSanitario p: dataPersonalSanitario){
                 if(p.getUnidades().equals(unidad)){
-                    System.out.println(x);
-                    System.out.println(p.getNombreCompleto());
-                    System.out.println(p.getTurno());
-                    System.out.println(p.getUnidades());
+                    System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                            "║                       Numero del Personal Sanitario: "+ x +"                    ║");
+                    System.out.println(p);
                     aux++;
-
-
                 }
                 x++;
             }
@@ -201,6 +206,7 @@ public class CitaController {
         return medico;
     }
     public static Unidades elegirUnidadCita(){
+        Scanner input = new Scanner(System.in);
         String unidad = "";
         String subUnidad = "";
         int opcion = 0;

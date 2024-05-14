@@ -126,8 +126,7 @@ public class PacienteController extends PersonaController {
     public static void mostrarPacientes(){
         for(int i=0; i < pacData.size(); i++) {
             System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
-                    "║                              Número del paciente: "+ i +"                        ║\n" +
-                    "╠════════════════════════════════════════════════════════════════════════════╣" );
+                    "║                              Número del paciente: "+ i +"                        ║");
             System.out.print(pacData.get(i));
         }
     }

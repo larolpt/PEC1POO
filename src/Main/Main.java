@@ -20,6 +20,7 @@ import static Main.ZonaMedica.Personas.PersonaController.inputFechaNacimiento;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.generarDatosPersonalSanitario;
+import static Main.ZonaMedica.menus.EstudianteMenu.estudianteMenu;
 import static Main.ZonaMedica.menus.GerenteMenu.menuGerentes;
 import static Main.ZonaMedica.menus.PacienteMenu.pacienteMenu;
 import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
@@ -66,7 +67,7 @@ public class Main {
                     pacienteMenu();
                     break;
                 case 4:
-
+                    estudianteMenu();
                     break;
                 case 5:
 

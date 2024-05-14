@@ -3,8 +3,7 @@ package Main.ZonaMedica.Personas.PersonalSanitario;
 public enum Turno {
     NO_ASIGNADO(0),
     MAÑANA(1),
-    TARDE(2),
-    NOCTURNO(3);
+    TARDE(2);
 
     private final int numAsignado;
 

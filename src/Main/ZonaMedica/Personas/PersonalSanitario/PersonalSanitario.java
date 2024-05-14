@@ -137,7 +137,7 @@ public class PersonalSanitario extends Persona {
         Queue<CitaPaciente> consultasHoy = new LinkedList<>();
         if(!this.citas.isEmpty()){
             for(CitaPaciente c: this.citas){
-                if (c.getDia().equals(new Date()) && !c.isEstaPasada()){
+                if (c.getDia().getDay() == new Date().getDay() && !c.isEstaPasada()){
                     consultasHoy.add(c);
                 }
             }

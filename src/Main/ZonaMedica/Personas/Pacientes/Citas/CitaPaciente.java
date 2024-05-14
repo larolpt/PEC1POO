@@ -59,4 +59,16 @@ public class CitaPaciente extends Cita {
         this.pacienteAsignado = pacienteAsignado;
     }
 
+
+    @Override
+    public String toString() {
+        return "╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                                  CITA MÉDICA                                 ║\n" +
+                "╠════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ ID: " + String.format("%1$-38s", id) + "║ Tipo: " + String.format("%1$-33s", tipo ? "Presencial" : "Telefónica") + "║\n" +
+                "║ Fecha: " + String.format("%1$-36s", formatearFecha(dia)) + "║ Hora: " + String.format("%1$-34s", horario ? "Mañana" : "Tarde") + "║\n" +
+                "║ Paciente: " + String.format("%1$-29s", pacienteAsignado.getNombreCompleto()) + "║\n" +
+                "╚════════════════════════════════════════════════════════════════════════════╝";
+    }
+
 }

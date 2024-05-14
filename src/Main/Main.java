@@ -20,8 +20,10 @@ import static Main.ZonaMedica.Personas.PersonaController.inputFechaNacimiento;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.generarDatosPersonalSanitario;
+import static Main.ZonaMedica.menus.AparcamientoMenu.aparcamientoMenu;
 import static Main.ZonaMedica.menus.EstudianteMenu.estudianteMenu;
 import static Main.ZonaMedica.menus.GerenteMenu.menuGerentes;
+import static Main.ZonaMedica.menus.MantenimientoMenu.mantenimientoMenuTrabajadores;
 import static Main.ZonaMedica.menus.PacienteMenu.pacienteMenu;
 import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
 
@@ -50,6 +52,7 @@ public class Main {
             System.out.println("3. Menu Paciente.");
             System.out.println("4. Menu Estudiante");
             System.out.println("5. Menu Mantenimiento");
+            System.out.println("6. Aparcamiento");
             System.out.println("0. Apagar");
             System.out.print("Ingrese su opción: ");
             // Leer la opción del usuario
@@ -70,7 +73,10 @@ public class Main {
                     estudianteMenu();
                     break;
                 case 5:
-
+                    mantenimientoMenuTrabajadores();
+                    break;
+                case 6:
+                    aparcamientoMenu();
                     break;
                 case 0:
                     System.out.println("Apagando...");

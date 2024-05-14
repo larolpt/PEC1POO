@@ -1,6 +1,8 @@
 package Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ExpedienteMedico {
@@ -45,10 +47,13 @@ public class ExpedienteMedico {
 
     @Override
     public String toString() {
-        return "ExpedienteMedico{" +
-                "fecha=" + fecha +
-                ", tratamiento='" + tratamiento + '\'' +
-                ", isActivo=" + isActivo +
-                '}';
+        String estado = isActivo ? "Activo" : "Inactivo";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaFormateada = fecha.format(formatter);
+
+        return "| Fecha: " + fechaFormateada + "\n| Tratamiento: " + tratamiento + "\n| Estado: " + estado;
     }
+
+
 }

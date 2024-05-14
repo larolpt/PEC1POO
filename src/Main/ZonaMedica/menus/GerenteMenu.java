@@ -2,6 +2,7 @@ package Main.ZonaMedica.menus;
 
 import Main.ZonaMedica.Campus.Contabilidad.Contabilidad;
 import Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones;
+import Main.ZonaMedica.Campus.Mantenimiento.MantenimientoController;
 import Main.ZonaMedica.Personas.Estudiantes.EstudianteController;
 import Main.ZonaMedica.Personas.Pacientes.Paciente;
 import Main.ZonaMedica.Personas.Pacientes.PacienteController;
@@ -49,6 +50,9 @@ public class GerenteMenu {
                     break;
                 case 5:
                     Contabilidad.menuContabilidad();
+                    break;
+                case 6:
+                    MantenimientoController.mantenimientoMenu();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");

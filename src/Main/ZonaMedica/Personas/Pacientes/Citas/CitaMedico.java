@@ -9,8 +9,8 @@ public class CitaMedico extends Cita {
     //attribute
     protected UUID id;//Lo uso para poder comprarlo mas tarde con la cita Paciente
     /**
-     Si el tipo == true cita presencial
-     Si el tipo == false cita telefonica
+     * Si el tipo == true cita presencial
+     * Si el tipo == false cita telefonica
      **/
     protected boolean tipo;
     protected PersonalSanitario medicoAsignado;
@@ -55,4 +55,18 @@ public class CitaMedico extends Cita {
         this.tipo = tipo;
     }
 
+
+    @Override
+    public String toString() {
+        return "╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                                  CITA MÉDICA                                 ║\n" +
+                "╠════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ ID: " + String.format("%1$-38s", id) + "║ Tipo: " + String.format("%1$-27s", tipo ? "Presencial" : "Telefónica") + "║\n" +
+                "║ Fecha: " + String.format("%1$-35s", formatearFecha(dia)) + "║ Hora: " + String.format("%1$-27s", horario ? "Mañana" : "Tarde") + "║\n" +
+                "║ Médico Asignado: " + String.format("%1$-32s", medicoAsignado.getNombreCompleto()) + "║\n" +
+                "╚════════════════════════════════════════════════════════════════════════════╝";
+    }
+
 }
+
+

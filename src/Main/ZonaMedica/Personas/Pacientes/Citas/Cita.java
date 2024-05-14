@@ -1,6 +1,7 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -62,6 +63,10 @@ public class Cita{
                 "dia=" + dia +
                 ", horario=" + horario +
                 '}';
+    }
+    protected String formatearFecha(Date fecha) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(fecha);
     }
 
     public UUID getId() {

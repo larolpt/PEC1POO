@@ -30,12 +30,16 @@ public class CitaPrueba extends Cita {
         this.prueba = prueba;
     }
 
+
     @Override
     public String toString() {
-        return "Main.ZonaMedica.Persona.Pacientes.CitaPrueba{" +
-                "prueba=" + prueba +
-                ", dia=" + dia +
-                ", hora=" + horario +
-                '}';
+
+        return "╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                "║                                CITA DE PRUEBA                              ║\n" +
+                "╠════════════════════════════════════════════════════════════════════════════╣\n" +
+                "║ Fecha: " + String.format("%1$-36s", formatearFecha(dia)) + "║ Hora: " + String.format("%1$-34s", horario ? "Mañana" : "Tarde") + "║\n" +
+                "║ Prueba: " + String.format("%1$-65s", prueba.toString()) + "║\n" +
+                "╚═════════════════════════════════════════════════════════════════════════════╝";
+
     }
 }

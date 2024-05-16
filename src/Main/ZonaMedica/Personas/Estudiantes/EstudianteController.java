@@ -1,16 +1,13 @@
 package Main.ZonaMedica.Personas.Estudiantes;
 
-import Main.ZonaMedica.Campus.Unidades.Unidades;
-import Main.ZonaMedica.Personas.Persona;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 import Main.ZonaMedica.Personas.PersonaController;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Personas.Estudiantes.EstudianteData.*;
-import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController.mostrarPersonal;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
 /**
  * menuEstudiante:

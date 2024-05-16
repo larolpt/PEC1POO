@@ -1,13 +1,13 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
-import Main.ZonaMedica.Campus.Unidades.Unidades;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 import Main.ZonaMedica.Personas.PersonaController;
 
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Main.ZonaMedica.Campus.Unidades.UnidadesData.*;
+import static Main.ZonaMedica.Personas.PersonalSanitario.Unidades.UnidadesData.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;
 import static Main.ZonaMedica.Personas.PersonalSanitario.Turno.*;
 /**

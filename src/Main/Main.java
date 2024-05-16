@@ -1,20 +1,12 @@
 package Main;
 
-import Main.ZonaMedica.menus.ServicioMedicinaMenu;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.generarHabitaciones;
-import static Main.ZonaMedica.Campus.Unidades.UnidadesData.generarUnidades;
-import static Main.ZonaMedica.Campus.Urgencias.UrgenciasData.irUrgencias;
+import static Main.ZonaMedica.Personas.PersonalSanitario.Unidades.UnidadesData.generarUnidades;
 import static Main.ZonaMedica.Personas.Estudiantes.EstudianteData.generarEstudiantes;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteData.genDatosPaciente;
-import static Main.ZonaMedica.Personas.PersonaController.inputFechaNacimiento;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

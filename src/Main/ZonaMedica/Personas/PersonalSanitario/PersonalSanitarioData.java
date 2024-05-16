@@ -1,12 +1,10 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
-import Main.ZonaMedica.Campus.Unidades.Unidades;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import static Main.ZonaMedica.Personas.Estudiantes.EstudianteController.inputAsignarSanitario;
 
 public class PersonalSanitarioData {
     // Crear una dataPersonalSanitario de objetos PersonalSanitario global para poder acceder desde distintas clases.

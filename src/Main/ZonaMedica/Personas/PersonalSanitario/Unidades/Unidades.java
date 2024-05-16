@@ -1,6 +1,4 @@
-package Main.ZonaMedica.Campus.Unidades;
-
-import java.util.ArrayList;
+package Main.ZonaMedica.Personas.PersonalSanitario.Unidades;
 
 public class Unidades {
 

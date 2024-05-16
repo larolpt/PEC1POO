@@ -1,7 +1,7 @@
 package Main.ZonaMedica.Personas.Pacientes.Citas;
 
 import Main.ZonaMedica.Campus.Contabilidad.Contabilidad;
-import Main.ZonaMedica.Campus.Unidades.Unidades;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 import Main.ZonaMedica.Personas.Pacientes.Paciente;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
 import Main.ZonaMedica.Personas.PersonalSanitario.Turno;
@@ -12,7 +12,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.*;
 
-import static Main.ZonaMedica.Campus.Unidades.UnidadesData.*;
+import static Main.ZonaMedica.Personas.PersonalSanitario.Unidades.UnidadesData.*;
 import static Main.ZonaMedica.Personas.Pacientes.Citas.TipoPruebas.*;
 import static Main.ZonaMedica.Personas.Pacientes.PacienteController.getPaciente;
 import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*;

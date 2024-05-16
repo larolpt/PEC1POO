@@ -1,13 +1,7 @@
 package Main.ZonaMedica.menus;
 
-import Main.ZonaMedica.Campus.Contabilidad.Contabilidad;
-import Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones;
-import Main.ZonaMedica.Campus.Unidades.Unidades;
-import Main.ZonaMedica.Personas.Estudiantes.EstudianteController;
-import Main.ZonaMedica.Personas.Pacientes.Paciente;
-import Main.ZonaMedica.Personas.Pacientes.PacienteController;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitario;
-import Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioController;
 
 import java.util.Scanner;
 

@@ -19,7 +19,7 @@ public class MantenimientoMenu {
             System.out.println("2. Arreglar próxima incidencia");
             System.out.println("3. Mostrar incidencias arregladas");
             System.out.println("0. Salir");
-
+            System.out.print("Eliga una opción: ");
             opcion = input.nextInt();
             input.nextLine(); // Limpiar el buffer
 

@@ -1,16 +1,12 @@
 package Main.ZonaMedica.Personas.PersonalSanitario;
 
-import Main.ZonaMedica.Campus.Unidades.Unidades;
-import Main.ZonaMedica.Personas.Pacientes.Citas.Cita;
-import Main.ZonaMedica.Personas.Pacientes.Citas.CitaMedico;
+import Main.ZonaMedica.Personas.PersonalSanitario.Unidades.Unidades;
 import Main.ZonaMedica.Personas.Pacientes.Citas.CitaPaciente;
 import Main.ZonaMedica.Personas.Persona;
 
-import java.time.LocalDate;
 import java.util.*;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.ingresarPaciente;
-import static Main.ZonaMedica.Personas.Pacientes.Citas.CitaController.inputPrueba;
 import static Main.ZonaMedica.Personas.Pacientes.ExpedienteMedico.ExpedienteMedicoController.*;
 
 

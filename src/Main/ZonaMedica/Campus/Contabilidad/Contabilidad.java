@@ -13,9 +13,6 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.d
 public class Contabilidad {
 
     public static int ingresosHospital = 0;
-    public static int gastosHospital = 0;
-
-    public static int costeArreglos = 0;
 
     public static void menuContabilidad(){
         Scanner input = new Scanner(System.in);
@@ -41,13 +38,7 @@ public class Contabilidad {
                     pagarNominasPersonalSanitario();
                     break;
                 case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
+                    gananciasHospital();
                     break;
                 case 0:
                     System.out.println("Volviendo del programa...");
@@ -57,6 +48,11 @@ public class Contabilidad {
             }
         } while (opcion != 0);
     }
+
+    private static void gananciasHospital() {
+        System.out.println("El hospital tiene actualmente unas ganancias de: " + ingresosHospital + "€");
+    }
+
     public static void pagarNominasPersonalSanitario(){
         int costoTotal = 0;
         System.out.println("=======================================");
@@ -72,10 +68,5 @@ public class Contabilidad {
         System.out.println("Costo total de nóminas: $" + costoTotal);
         System.out.println("=======================================");
 
-    }
-    public static void calcularGastos(){
-        for(PersonalSanitario p: dataPersonalSanitario){
-            gastosHospital += p.getSueldo();
-        }
     }
 }

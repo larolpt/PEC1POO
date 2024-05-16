@@ -1,6 +1,5 @@
-package Main.ZonaMedica.Campus.Unidades;
+package Main.ZonaMedica.Personas.PersonalSanitario.Unidades;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 

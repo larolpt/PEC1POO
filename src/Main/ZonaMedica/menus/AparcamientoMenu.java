@@ -11,11 +11,14 @@ public class AparcamientoMenu {
         Scanner input = new Scanner(System.in);
         int opcion;
         do{
-            System.out.println("\nSeleccione una opción:");
+            System.out.println("=======================================");
+            System.out.println("             APARCAMIENTO        ");
+            System.out.println("=======================================");
             System.out.println("1. Ingresar vehículo");
             System.out.println("2. Sacar vehículo");
             System.out.println("3. Mostrar cantidad de vehículos estacionados");
             System.out.println("0. Salir");
+            System.out.print("Seleccione una opción:");
 
             opcion = input.nextInt();
             input.nextLine(); // Limpiar el buffer

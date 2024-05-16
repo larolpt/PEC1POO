@@ -172,7 +172,9 @@ public class PlantaHabitaciones {
     public static void mostrarPacientesNoIngresados(){
         for(int i=0; i < pacData.size(); i++) {
             if(!pacData.get(i).isEstaIngresado()){//Se filtran los pacientes que no estan ingresados
-                System.out.println(i+1 + " " + pacData.get(i));
+                System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
+                        "║                              Número del paciente: "+ i +"                        ║");
+                System.out.println(pacData.get(i));
             }
         }
     }

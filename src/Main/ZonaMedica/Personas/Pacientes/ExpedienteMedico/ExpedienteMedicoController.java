@@ -36,7 +36,10 @@ public class ExpedienteMedicoController {
                     break;
                 case 2:
                     paciente.mostrarHistorialMedico();
-                    paciente.setHistorialMedico(modificarExpediente(getExpedienteMedico(paciente)));
+                    ExpedienteMedico historial = getExpedienteMedico(paciente);
+                    if(historial != null){
+                        paciente.setHistorialMedico(modificarExpediente(historial));
+                    }
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");

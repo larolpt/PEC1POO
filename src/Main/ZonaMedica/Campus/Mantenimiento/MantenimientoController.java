@@ -21,7 +21,7 @@ public class MantenimientoController {
             System.out.println("3. Arreglar próxima incidencia");
             System.out.println("4. Mostrar incidencias arregladas");
             System.out.println("0. Salir");
-
+            System.out.print("Elige una opción: ");
             opcion = input.nextInt();
             input.nextLine(); // Limpiar el buffer
 

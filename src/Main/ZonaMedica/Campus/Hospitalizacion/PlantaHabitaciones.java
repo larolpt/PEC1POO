@@ -1,6 +1,5 @@
 package Main.ZonaMedica.Campus.Hospitalizacion;
 
-import Main.Main;
 import Main.ZonaMedica.Campus.Contabilidad.Contabilidad;
 import Main.ZonaMedica.Personas.Pacientes.Paciente;
 

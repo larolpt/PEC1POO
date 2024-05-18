@@ -15,7 +15,7 @@ public class ServicioMedicinaMenu {
     public static void menuPersonalSanitario() {
         PersonalSanitario medico = identificarMedico();
         if(medico == null){
-
+            System.out.println("ERROR: No existe un personal sanitario con ese dni");
         }else if (medico.getUnidades().equals(new Unidades("Urgencias",""))) {
             menuUrgencias();
         }else{
@@ -88,18 +88,23 @@ public class ServicioMedicinaMenu {
         Scanner input = new Scanner(System.in);
         String dni;
         PersonalSanitario medico = null;
-        System.out.print("Introduce tu dni para identificarte: ");
-        dni = input.nextLine().toUpperCase().trim();
-        if(!dni.matches("\\d{8}[A-HJ-NP-TV-Z]")){//Se comprueba con una expresion regular si el dni esta en el formato correcto español
-            System.out.println("Formato del dni no aceptado formato debe ser(12345678X)");
-            identificarMedico();
-        } else if (pacData.isEmpty()) {
-            System.out.println("No hay pacientes en el sistema.");
-        }
+        boolean flat = true;
+        do{
+            System.out.print("Introduce tu dni para identificarte: ");
+            dni = input.nextLine().toUpperCase().trim();
+            if(!dni.matches("\\d{8}[A-HJ-NP-TV-Z]")){//Se comprueba con una expresion regular si el dni esta en el formato correcto español
+                System.out.println("Formato del dni no aceptado formato debe ser(12345678X)");
+                flat = false;
+            } else if (pacData.isEmpty()) {
+                System.out.println("No hay medicos en el sistema.");
+                flat = true;
+            }else{
+                flat = true;
+            }
+        }while(!flat);
         for(PersonalSanitario p: dataPersonalSanitario){
             if(p.getDni().equalsIgnoreCase(dni)){
                 medico = p;
-                break;
             }
         }
         return medico;

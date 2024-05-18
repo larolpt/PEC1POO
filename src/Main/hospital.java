@@ -1,6 +1,5 @@
 package Main;
 
-import java.util.Date;
 import java.util.Scanner;
 
 import static Main.ZonaMedica.Campus.Hospitalizacion.PlantaHabitaciones.generarHabitaciones;
@@ -19,9 +18,12 @@ import static Main.ZonaMedica.menus.MantenimientoMenu.mantenimientoMenuTrabajado
 import static Main.ZonaMedica.menus.PacienteMenu.pacienteMenu;
 import static Main.ZonaMedica.menus.ServicioMedicinaMenu.menuPersonalSanitario;
 
-public class Main {
+public class hospital {
     public static void main(String[] args) {
-        System.out.println(new Date());
+        inicio();
+    }
+
+    public static void inicio(){
         generarDatosPersonalSanitario();
         generarHabitaciones();
         generarUnidades();

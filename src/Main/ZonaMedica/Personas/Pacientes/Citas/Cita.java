@@ -16,7 +16,7 @@ public class Cita{
     protected boolean horario;
     protected boolean estaPasada;
 
-    //builder
+    //buider
 
     public Cita(Date dia, boolean horario, boolean estaPasada) {
         this.dia = dia;

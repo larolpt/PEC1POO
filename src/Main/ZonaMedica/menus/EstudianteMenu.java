@@ -11,6 +11,10 @@ import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
 
 public class EstudianteMenu {
 
+
+    /**
+     * Muestra el menú para los estudiantes y maneja las opciones seleccionadas por el usuario.
+     */
     public static void estudianteMenu(){
         Scanner input = new Scanner(System.in);
         Estudiante estudiante = identificarEstudiante();
@@ -44,6 +48,12 @@ public class EstudianteMenu {
         }
     }
 
+
+    /**
+     * Identifica al estudiante en el sistema.
+     *
+     * @return El estudiante identificado, o null si no se encuentra en el sistema.
+     */
     public static Estudiante identificarEstudiante(){
         Scanner input = new Scanner(System.in);
         String dni;

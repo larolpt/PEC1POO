@@ -14,6 +14,10 @@ import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
 public class PlantaHabitaciones {
     public static Habitacion[] habitaciones = new Habitacion[90];
 
+
+    /**
+     * Muestra el menú de hospitalización y permite al usuario realizar acciones relacionadas con el ingreso y alta de pacientes.
+     */
     public static void menuHospitalizacion() {
         int opcion;
         do {
@@ -48,6 +52,9 @@ public class PlantaHabitaciones {
         } while (opcion != 0);
     }
 
+    /**
+     * Muestra el estado de las habitaciones, indicando si están ocupadas o no.
+     */
     private static void mostrarEstadoHabitaciones() {
 
         // Mostrar el estado de las habitaciones en líneas de 10 habitaciones
@@ -66,6 +73,10 @@ public class PlantaHabitaciones {
         mostrarDatosHabitacion();
 
     }
+
+    /**
+     * Muestra los detalles de una habitación seleccionada por el usuario.
+     */
     public static void mostrarDatosHabitacion(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el número de la habitación para ver su información (si no quiere introduzca 0): ");
@@ -96,11 +107,19 @@ public class PlantaHabitaciones {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    /**
+     * Genera las habitaciones y las almacena en un array.
+     */
     public static void generarHabitaciones(){
         for(int i = 0; habitaciones.length > i; i++){
             habitaciones[i] = new Habitacion(i+1);
         }
     }
+
+    /**
+     * Permite dar de alta a un paciente, liberando la habitación en la que estaba ingresado.
+     */
     public static void darAltaPaciente(){
         int numAlta = -1;
         mostrarPacienteIngresados();
@@ -124,6 +143,10 @@ public class PlantaHabitaciones {
             darAltaPaciente();
         }
     }
+
+    /**
+     * Permite ingresar a un paciente en una habitación disponible.
+     */
     public static void ingresarPaciente(){
         Paciente paciente = inputPaciente();
         paciente.setEstaIngresado(true);
@@ -137,6 +160,9 @@ public class PlantaHabitaciones {
         }
     }
 
+    /**
+     * Permite al usuario elegir un paciente para ingresar en una habitación.
+     */
     public static void ingresarPaciente(Paciente paciente){
         paciente.setEstaIngresado(true);
         System.out.println("Introduce a que se debe el ingreso del paciente: ");
@@ -148,6 +174,13 @@ public class PlantaHabitaciones {
             }
         }
     }
+
+    /**
+     * Solicita al usuario que seleccione un paciente para ingresarlo en el sistema hospitalario.
+     * Muestra una lista de pacientes no ingresados para que el usuario elija.
+     *
+     * @return El paciente seleccionado por el usuario para ingresarlo.
+     */
     public static Paciente inputPaciente(){
         int numPaciente = -1;
         Paciente pacienteElegido = null;
@@ -168,6 +201,10 @@ public class PlantaHabitaciones {
         }
         return pacienteElegido;
     }
+
+    /**
+     * Muestra la lista de pacientes que no están ingresados en el sistema.
+     */
     public static void mostrarPacientesNoIngresados(){
         for(int i=0; i < pacData.size(); i++) {
             if(!pacData.get(i).isEstaIngresado()){//Se filtran los pacientes que no estan ingresados
@@ -177,6 +214,10 @@ public class PlantaHabitaciones {
             }
         }
     }
+
+    /**
+     * Muestra la información de los pacientes ingresados en las habitaciones del hospital.
+     */
     public static void mostrarPacienteIngresados(){
         for(int i=0; habitaciones.length > i; i++){
             if(habitaciones[i].isOcupada()){
@@ -184,6 +225,13 @@ public class PlantaHabitaciones {
             }
         }
     }
+
+    /**
+     * Genera y muestra un ticket de factura para el paciente que se da de alta.
+     *
+     * @param dias  La cantidad de días que el paciente ha estado hospitalizado.
+     * @param coste El costo total del tratamiento y la estancia del paciente.
+     */
     public static void generarFactura(int dias, int coste){
         System.out.println("=======================================");
         System.out.println("           Ticket de Factura            ");

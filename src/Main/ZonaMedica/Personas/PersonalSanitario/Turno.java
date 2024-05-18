@@ -13,6 +13,10 @@ public enum Turno {
     public int getNumero(){
         return numAsignado;
     }
+
+    /**
+     * Muestra todos los turnos disponibles, con sus números asignados.
+     */
     public static void mostrarTurnos(){
         int cont = 0;
 
@@ -25,6 +29,14 @@ public enum Turno {
         }
         System.out.print("\n");
     }
+
+    /**
+     * Asigna un turno basado en su número.
+     *
+     * @param numTurno el número del turno a asignar.
+     * @return el turno correspondiente al número proporcionado.
+     * @throws IllegalArgumentException si no se encuentra ningún turno con el número proporcionado.
+     */
     public static Turno asignarTurno(int numTurno){
         for (Turno turno : Turno.values()) {
             if (turno.getNumero() == numTurno) {

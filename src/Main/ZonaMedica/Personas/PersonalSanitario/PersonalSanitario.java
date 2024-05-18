@@ -175,8 +175,6 @@ public class PersonalSanitario extends Persona {
         }
 
     }
-
-
     @Override
     public String toString() {
         return "╔════════════════════════════════════════════════════════════════════════════╗\n" +

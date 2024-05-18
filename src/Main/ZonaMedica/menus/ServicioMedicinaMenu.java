@@ -12,6 +12,11 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.d
 
 public class ServicioMedicinaMenu {
     public static Scanner input = new Scanner(System.in);
+
+
+    /**
+     * Muestra el menú principal para el personal sanitario y redirige a los menús correspondientes según la unidad del médico.
+     */
     public static void menuPersonalSanitario() {
         PersonalSanitario medico = identificarMedico();
         if(medico == null){
@@ -23,7 +28,11 @@ public class ServicioMedicinaMenu {
         }
     }
 
-
+    /**
+     * Muestra el menú para médicos y maneja las opciones seleccionadas por el usuario.
+     *
+     * @param medico el médico que accede al menú.
+     */
     public static void menuMedico(PersonalSanitario medico){
         int opcion;
         do {
@@ -54,6 +63,10 @@ public class ServicioMedicinaMenu {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Muestra el menú para médicos de urgencias y maneja las opciones seleccionadas por el usuario.
+     */
     public static void menuUrgencias(){
         int opcion;
         do {
@@ -84,6 +97,12 @@ public class ServicioMedicinaMenu {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Identifica a un médico mediante su DNI.
+     *
+     * @return el médico identificado, o null si no se encuentra.
+     */
     public static PersonalSanitario identificarMedico(){
         Scanner input = new Scanner(System.in);
         String dni;

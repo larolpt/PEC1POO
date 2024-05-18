@@ -19,6 +19,9 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.*
 public class CitaController {
 
 
+    /**
+     * Muestra el menú de gestión de citas médicas y maneja las opciones seleccionadas por el usuario.
+     */
     public static void menuGestionCitasMedicasPacientes() {
         Scanner input = new Scanner(System.in);
         int opcion;
@@ -49,6 +52,12 @@ public class CitaController {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Elimina una cita específica de un paciente.
+     *
+     * @param paciente el paciente del cual se eliminará la cita.
+     */
     public static void eliminarCitasPacientes(Paciente paciente){
         Scanner input = new Scanner(System.in);
         int numCita = -1;
@@ -80,6 +89,12 @@ public class CitaController {
             System.out.println("ERROR: No tienes citas para borrar");
         }
     }
+
+    /**
+     * Permite al usuario seleccionar una prueba médica.
+     *
+     * @return el tipo de prueba seleccionada.
+     */
     public static TipoPruebas inputPrueba(){
         Scanner input = new Scanner(System.in);
         int prueba = 0;
@@ -97,6 +112,12 @@ public class CitaController {
         }
         return pruebaElegida;
     }
+
+    /**
+     * Permite al usuario decidir el horario de una cita (mañana o tarde).
+     *
+     * @return true si el horario es en la mañana, false si es en la tarde.
+     */
     public static boolean inputHorario(){
         Scanner input = new Scanner(System.in);
         boolean isActive = false;
@@ -116,6 +137,12 @@ public class CitaController {
         } while (!isValidInput);
         return isActive;
     }
+
+    /**
+     * Permite al usuario ingresar la fecha para una cita.
+     *
+     * @return la fecha de la cita.
+     */
     public static Date inputFechaCita() {
         Scanner in = new Scanner(System.in);
         String fecha;
@@ -146,6 +173,12 @@ public class CitaController {
             return inputFechaCita();
         }
     }
+
+    /**
+     * Permite al usuario decidir el tipo de cita (presencial o telefónica).
+     *
+     * @return true si la cita es presencial, false si es telefónica.
+     */
     public static boolean inputTipoCita(){
         Scanner input = new Scanner(System.in);
         boolean isActive = false;
@@ -165,6 +198,12 @@ public class CitaController {
         } while (!isValidInput);
         return isActive;
     }
+
+    /**
+     * Permite al usuario asignar un personal sanitario a la cita.
+     *
+     * @return el personal sanitario asignado.
+     */
     public static PersonalSanitario inputAsignarSanitario(){//Se le asigna el Medico con el que puede ver las consultas.//Se muestran todos los medicos que hay para elegir.
         Scanner input = new Scanner(System.in);
         Unidades u = elegirUnidadCita();
@@ -179,6 +218,13 @@ public class CitaController {
 
         return p;
     }
+
+    /**
+     * Permite al usuario seleccionar un personal sanitario de una unidad específica.
+     *
+     * @param unidad la unidad de la cual se seleccionará el personal sanitario.
+     * @return el personal sanitario seleccionado.
+     */
     private static PersonalSanitario inputPersonalUnidad(Unidades unidad) {
         Scanner input = new Scanner(System.in);
         int x = 1;
@@ -205,6 +251,12 @@ public class CitaController {
         }
         return medico;
     }
+
+    /**
+     * Permite al usuario seleccionar una unidad para la cita.
+     *
+     * @return la unidad seleccionada.
+     */
     public static Unidades elegirUnidadCita(){
         Scanner input = new Scanner(System.in);
         String unidad = "";
@@ -245,6 +297,13 @@ public class CitaController {
         }
         return new Unidades(unidad,subUnidad);
     }
+
+    /**
+     * Obtiene el horario del médico asignado.
+     *
+     * @param medicoAsignado el médico asignado.
+     * @return true si el horario es en la mañana, false si es en la tarde.
+     */
     public static boolean obtenerHorario(PersonalSanitario medicoAsignado) {
         if (medicoAsignado.getTurno() == Turno.MAÑANA) {
             return true;

@@ -267,22 +267,5 @@ public class PersonalSanitarioController extends PersonaController {
         }
         return sueldo;
     }
-    public static PersonalSanitario getPersonalSanitario(){
-        PersonalSanitario medico = null;
-        int registro = -1;
-        try{
-            mostrarPersonal();
-            System.out.print("Indique el número del registro del personal sanitario que quiera elegir: ");
-            registro = input.nextInt()-1;
-            input.nextLine();
-            medico = dataPersonalSanitario.get(registro);
-        }catch (InputMismatchException e){
-            System.out.println("Error: Introduzca un valor numerico solo. ");
-            getPersonalSanitario();
-        }catch (IndexOutOfBoundsException e){
-            System.out.println("Error: No existe este registro. ");
-            getPersonalSanitario();//LLamada a este metodo para que se vuelva a pedir el numero de registro
-        }
-        return medico;
-    }
+
 }

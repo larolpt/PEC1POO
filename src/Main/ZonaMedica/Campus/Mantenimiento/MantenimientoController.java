@@ -9,6 +9,9 @@ public class MantenimientoController {
     private static final LinkedList<Incidencia> incidenciasArregladas = new LinkedList<>();
 
 
+    /**
+     * Muestra el menú de mantenimiento y permite al usuario realizar acciones relacionadas con el mantenimiento.
+     */
     public static void mantenimientoMenu() {
         Scanner input = new Scanner(System.in);
         int opcion;
@@ -59,15 +62,27 @@ public class MantenimientoController {
         }while(opcion != 0);
     }
 
+    /**
+     * Agrega una nueva incidencia a la cola de incidencias pendientes.
+     * @param problema Descripción del problema de la incidencia.
+     */
     public static void agregarIncidencia(String problema) {
         Incidencia incidencia = new Incidencia(problema);
         colaIncidencias.add(incidencia);
     }
 
+    /**
+     * Obtiene la próxima incidencia en la cola de incidencias pendientes.
+     * @return La próxima incidencia o null si no hay incidencias pendientes.
+     */
     public static Incidencia verProximaIncidencia() {
         return colaIncidencias.peek();
     }
 
+    /**
+     * Arregla la próxima incidencia en la cola de incidencias pendientes y la mueve a la lista de incidencias arregladas.
+     * @return La incidencia arreglada o null si no hay incidencias pendientes.
+     */
     public static Incidencia arreglarIncidencia() {
         Incidencia incidencia = colaIncidencias.poll();
         if (incidencia != null) {
@@ -77,6 +92,9 @@ public class MantenimientoController {
         return incidencia;
     }
 
+    /**
+     * Muestra las incidencias que han sido arregladas.
+     */
     public static void mostrarIncidenciasArregladas() {
         System.out.println("Incidencias Arregladas:");
         for (Incidencia incidencia : incidenciasArregladas) {

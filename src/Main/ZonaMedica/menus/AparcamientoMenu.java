@@ -7,6 +7,10 @@ public class AparcamientoMenu {
     private static ArrayList<String> vehiculos = new ArrayList<>();
     private static final int CAPACIDAD_MAXIMA = 90;
 
+
+    /**
+     * Muestra el menú del aparcamiento y maneja las opciones seleccionadas por el usuario.
+     */
     public static void aparcamientoMenu() {
         Scanner input = new Scanner(System.in);
         int opcion;
@@ -41,6 +45,10 @@ public class AparcamientoMenu {
         }while(opcion != 0);
     }
 
+
+    /**
+     * Permite ingresar un vehículo al aparcamiento si hay capacidad disponible.
+     */
     private static void ingresarVehiculo() {
         Scanner input = new Scanner(System.in);
         if (vehiculos.size() >= CAPACIDAD_MAXIMA) {
@@ -55,6 +63,9 @@ public class AparcamientoMenu {
         System.out.println("Vehículo con matrícula " + matricula + " ingresado al parking.");
     }
 
+    /**
+     * Permite sacar un vehículo del aparcamiento.
+     */
     private static void sacarVehiculo() {
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese la matrícula de su vehículo a sacar:");

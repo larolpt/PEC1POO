@@ -15,6 +15,10 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.d
 public class ExpedienteMedicoController {
     public static Scanner input = new Scanner(System.in);
 
+
+    /**
+     * Muestra el menú de gestión de expedientes médicos y maneja las opciones seleccionadas por el usuario.
+     */
     public static void menuExpediente(){
         int opcion;
         Paciente paciente = getPaciente();
@@ -49,6 +53,12 @@ public class ExpedienteMedicoController {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Crea un nuevo expediente médico para un paciente.
+     *
+     * @return el nuevo expediente médico creado.
+     */
     public static ExpedienteMedico crearExpediente(){
         String tratamiento = "";
         boolean isActivo = true;
@@ -63,6 +73,13 @@ public class ExpedienteMedicoController {
                 isActivo
         );
     }
+
+    /**
+     * Modifica un expediente médico existente.
+     *
+     * @param expediente el expediente médico a modificar.
+     * @return el expediente médico modificado.
+     */
     public static ExpedienteMedico modificarExpediente(ExpedienteMedico expediente) {
         System.out.println("¿Qué atributo deseas modificar?");
         System.out.println("1. Tratamiento");
@@ -89,6 +106,14 @@ public class ExpedienteMedicoController {
         System.out.println(expediente);
         return expediente;
     }
+
+
+    /**
+     * Obtiene un expediente médico específico de un paciente.
+     *
+     * @param paciente el paciente del que se va a obtener el expediente médico.
+     * @return el expediente médico seleccionado.
+     */
     public static ExpedienteMedico getExpedienteMedico(Paciente paciente){
         int registro = 0;
         ExpedienteMedico expediente = null;

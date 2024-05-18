@@ -10,6 +10,10 @@ import static Main.ZonaMedica.Personas.Pacientes.PacienteData.pacData;
 public class PacienteMenu {
 
     public static Scanner input = new Scanner(System.in);
+
+    /**
+     * Muestra el menú principal para el paciente y maneja las opciones seleccionadas por el usuario.
+     */
     public static void pacienteMenu(){
         Paciente paciente = identificarPaciente();
         int opcion;
@@ -46,6 +50,11 @@ public class PacienteMenu {
         }
     }
 
+    /**
+     * Identifica al paciente mediante su DNI.
+     *
+     * @return el paciente identificado, o null si no se encuentra.
+     */
     public static Paciente identificarPaciente(){
         String dni;
         Paciente paciente = null;

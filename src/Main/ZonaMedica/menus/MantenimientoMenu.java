@@ -8,6 +8,10 @@ import java.util.Scanner;
 import static Main.ZonaMedica.Campus.Mantenimiento.MantenimientoController.*;
 
 public class MantenimientoMenu {
+
+    /**
+     * Muestra el menú de mantenimiento para los trabajadores y maneja las opciones seleccionadas por el usuario.
+     */
     public static void mantenimientoMenuTrabajadores() {
         Scanner input = new Scanner(System.in);
         int opcion;

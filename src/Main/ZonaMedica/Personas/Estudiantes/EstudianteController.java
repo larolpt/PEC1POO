@@ -238,7 +238,6 @@ public class EstudianteController extends PersonaController {
         System.out.println("-----------------------------------------------------");
         System.out.print(" Opción: ");
     }
-
     public static void mostrarPersonalEstudiantes(){
         int x = 1;
         if(dataPersonalSanitario.isEmpty()){

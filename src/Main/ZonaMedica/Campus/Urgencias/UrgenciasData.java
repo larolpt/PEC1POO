@@ -18,13 +18,27 @@ public class UrgenciasData {
     public static Queue<Urgencias> urgenciasData = new LinkedList<>();
     public static Scanner input = new Scanner(System.in);
 
+
+    /**
+     * Permite al paciente ir a urgencias.
+     * @param paciente El paciente que va a urgencias.
+     */
     public static void irUrgencias(Paciente paciente){
         urgenciasData.add(new Urgencias(paciente,inputProblema()));
     }
+
+    /**
+     * Solicita al paciente que describa el problema que tiene.
+     * @return La descripción del problema.
+     */
     public static String inputProblema() {
         System.out.println("Describe el problema que tienes: ");
         return input.nextLine();
     }
+
+    /**
+     * Permite al personal sanitario pasar consulta a un paciente en urgencias.
+     */
     public static void pasarConsulta(){
         if(!urgenciasData.isEmpty()){
             Urgencias paciente = urgenciasData.poll();
@@ -60,6 +74,10 @@ public class UrgenciasData {
             System.out.println("No tienes citas para pasar");
         }
     }
+
+    /**
+     * Muestra la cola de pacientes en urgencias.
+     */
     public static void mostrarCola(){
         for(Urgencias u: urgenciasData){
             System.out.println(u);

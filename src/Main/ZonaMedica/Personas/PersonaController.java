@@ -11,18 +11,39 @@ import java.util.Scanner;
 
 public class PersonaController {
     private static Scanner input = new Scanner(System.in);
+    /**
+     * Solicita al usuario que introduzca su nombre.
+     *
+     * @return el nombre ingresado por el usuario, recortado de espacios en blanco.
+     */
     public static String inputNombre(){
         System.out.print("Introduce el nombre: ");
         return input.nextLine().trim();
     }
+    /**
+     * Solicita al usuario que introduzca su primer apellido.
+     *
+     * @return el primer apellido ingresado por el usuario, recortado de espacios en blanco.
+     */
     public static String inputApellido1(){
         System.out.print("Introduce el primer apellido: ");
         return input.nextLine().trim();
     }
+    /**
+     * Solicita al usuario que introduzca su segundo apellido.
+     *
+     * @return el segundo apellido ingresado por el usuario, recortado de espacios en blanco.
+     */
     public static String inputApellido2(){
         System.out.print("Introduce el segundo apellido: ");
         return input.nextLine().trim();
     }
+    /**
+     * Solicita al usuario que introduzca su DNI.
+     * El DNI debe estar en el formato correcto(8 dígitos seguidos de una letra).
+     *
+     * @return el DNI ingresado por el usuario, en mayúsculas.
+     */
     public static String inputDNI(){
         String dni;
         System.out.print("Introduce el dni: ");
@@ -33,10 +54,21 @@ public class PersonaController {
         }
         return dni;
     }
+    /**
+     * Solicita al usuario que introduzca su lugar de residencia.
+     *
+     * @return el lugar de residencia ingresado por el usuario.
+     */
     public static String inputResidencia(){
         System.out.print("Introduce el lugar de residencia: ");
         return input.nextLine().trim();
     }
+    /**
+     * Solicita al usuario que introduzca su código postal.
+     * El código postal debe estar en el formato correcto de 5 dígitos.
+     *
+     * @return el código postal ingresado por el usuario.
+     */
     public static int inputCodigoPostal() {
         String cp = "";
         boolean isValid = false;
@@ -53,6 +85,12 @@ public class PersonaController {
         }
         return Integer.parseInt(cp);
     }
+    /**
+     * Solicita al usuario que introduzca su fecha de nacimiento.
+     * La fecha debe estar en el formato dd/MM/yyyy.
+     *
+     * @return la fecha de nacimiento ingresada por el usuario.
+     */
     public static Date inputFechaNacimiento(){
         String fecha;
         Date fechaNacimiento = null;
@@ -75,25 +113,12 @@ public class PersonaController {
         }
         return fechaNacimiento;
     }
-    public static boolean inputActivo() {
-        boolean isActive = false;
-        boolean isValidInput;
-
-        do {
-            System.out.print("¿Va a estar activo en el hospital? (S/N): ");
-            String respuesta = input.nextLine().trim().toLowerCase();
-            isValidInput = true;
-
-            if (respuesta.equals("si") || respuesta.equals("s") || respuesta.equals("sí")) { isActive = true; }
-            else if (respuesta.equals("no") || respuesta.equals("n")) { isActive = false; }
-            else {
-                System.out.println("Respuesta no válida. Por favor, ingrese 'S' o 'N'.");
-                isValidInput = false;
-            }
-        } while (!isValidInput);
-        return isActive;
-    }
-
+    /**
+     * Solicita al usuario que introduzca su número de teléfono.
+     * El número de teléfono debe estar en el formato correcto de 9 dígitos.
+     *
+     * @return el número de teléfono ingresado por el usuario.
+     */
     public static int inputTelefono() {
         String tel = "";
         boolean isValid = false;

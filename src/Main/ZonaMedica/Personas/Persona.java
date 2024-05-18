@@ -8,6 +8,7 @@ public class Persona {
     protected String nombre;
     protected String primerApellido;
     protected String segundoApellido;
+
     protected String dni;
     protected Date fNacimiento;
     protected int codigoPostal;

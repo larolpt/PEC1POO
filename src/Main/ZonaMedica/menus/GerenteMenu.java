@@ -12,6 +12,10 @@ import java.util.Scanner;
 
 public class GerenteMenu {
 
+
+    /**
+     * Muestra el menú para los gerentes y maneja las opciones seleccionadas por el usuario.
+     */
     public static void menuGerentes(){
         Scanner input = new Scanner(System.in);
         int opcion;

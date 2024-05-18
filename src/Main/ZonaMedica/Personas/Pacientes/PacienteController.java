@@ -15,6 +15,9 @@ import static Main.ZonaMedica.Personas.PersonalSanitario.PersonalSanitarioData.d
 public class PacienteController extends PersonaController {
     public static Scanner input = new Scanner(System.in);
 
+    /**
+     * Muestra el menú de gestión de pacientes y maneja las opciones seleccionadas por el usuario.
+     */
     public static void menuPaciente(){
         int opcion;
         do {
@@ -59,6 +62,10 @@ public class PacienteController extends PersonaController {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Da de alta a un nuevo paciente pidiendo los datos necesarios y guardándolo en la lista de pacientes.
+     */
     public static void darAltaPaciente(){
         //Llamada a los metodos para crear un nuevo trabajador y guardarlo en la lista
         Paciente pac = new Paciente(
@@ -73,6 +80,10 @@ public class PacienteController extends PersonaController {
                 inputTieneSeguro()
         );
     }
+
+    /**
+     * Modifica los datos de un paciente seleccionado por el usuario.
+     */
     public static void modificarDatosPacientes(){
         int opcion, registro = 0;
         Paciente personal = getPaciente();
@@ -120,9 +131,17 @@ public class PacienteController extends PersonaController {
             }
         } while (opcion != 0);
     }
+
+    /**
+     * Elimina un paciente seleccionado por el usuario.
+     */
     public static void eliminarPaciente(){
         pacData.remove(getPaciente());
     }
+
+    /**
+     * Muestra la lista de pacientes con su información.
+     */
     public static void mostrarPacientes(){
         for(int i=0; i < pacData.size(); i++) {
             System.out.println("╔════════════════════════════════════════════════════════════════════════════╗\n" +
@@ -130,6 +149,10 @@ public class PacienteController extends PersonaController {
             System.out.print(pacData.get(i));
         }
     }
+
+    /**
+     * Muestra un menú de selección de atributos de un paciente para su modificación.
+     */
     public static void mostrarAtributos(){
         System.out.println("Seleccione el atributo a modificar:");
         System.out.println("---------------------------------------------------");
@@ -142,14 +165,32 @@ public class PacienteController extends PersonaController {
         System.out.println("---------------------------------------------------");
         System.out.print(" Opción: ");
     }
+
+    /**
+     * Solicita al usuario si el paciente tiene seguro médico.
+     *
+     * @return true si el paciente tiene seguro médico, false en caso contrario.
+     */
     public static boolean inputTieneSeguro(){
         System.out.print("¿Tiéne seguro medico? (S/N): ");
         return respuestaSiNO();
     }
+
+    /**
+     * Solicita al usuario si el paciente está ingresado.
+     *
+     * @return true si el paciente está ingresado, false en caso contrario.
+     */
     public static boolean inputEstaIngresado(){
         System.out.print("¿Esta ingresado? (S/N): ");
         return respuestaSiNO();
     }
+
+    /**
+     * Solicita una respuesta de sí o no al usuario.
+     *
+     * @return true si la respuesta es sí, false si la respuesta es no.
+     */
     public static boolean respuestaSiNO(){
         boolean isActive = false;
         boolean isValidInput;
@@ -167,6 +208,12 @@ public class PacienteController extends PersonaController {
         } while (!isValidInput);
         return isActive;
     }
+
+    /**
+     * Solicita al usuario que seleccione un paciente de la lista.
+     *
+     * @return el paciente seleccionado.
+     */
     public static Paciente getPaciente(){
         Paciente paciente = null;
         int registro = -1;

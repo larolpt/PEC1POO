@@ -8,6 +8,10 @@ public class UnidadesData {
         public static HashMap<Integer, String> enfermedadesComunesMap = new HashMap<>();
         public static HashMap<Integer, String> consultasExternasMap = new HashMap<>();
 
+        /**
+         * Genera y asigna los datos de las unidades, enfermedades comunes y consultas externas.
+         */
+
         public static void generarUnidades(){
 
             // Datos para las unidades
@@ -37,7 +41,11 @@ public class UnidadesData {
             consultasExternasMap.put(9, "Traumatología");
         }
 
-
+    /**
+     * Muestra un menú para seleccionar una unidad y retorna la selección.
+     *
+     * @return la unidad seleccionada.
+     */
     public static String inputUnidadesMap(){
         String unidades = "";
         // Imprimir el HashMap para verificación
@@ -56,6 +64,11 @@ public class UnidadesData {
         return unidades;
     }
 
+    /**
+     * Muestra un menú para seleccionar una enfermedad común y retorna la selección.
+     *
+     * @return la enfermedad común seleccionada.
+     */
     public static String inputEnfermedadesComunes(){
         String enfermedades = "";
         System.out.println("=======================================");
@@ -76,6 +89,11 @@ public class UnidadesData {
         return enfermedades;
     }
 
+    /**
+     * Muestra un menú para seleccionar una consulta externa y retorna la selección.
+     *
+     * @return la consulta externa seleccionada.
+     */
     public static String inputConsultasExternas(){
         String consultaElegida = "";
         System.out.println("=======================================");
@@ -95,6 +113,12 @@ public class UnidadesData {
         return consultaElegida;
     }
 
+
+    /**
+     * Solicita al usuario que ingrese un número entero y lo retorna.
+     *
+     * @return el número entero ingresado por el usuario.
+     */
     public static int inputKey(){
         Scanner input = new Scanner(System.in);
         // Input de un número entero con try-catch para manejar excepciones

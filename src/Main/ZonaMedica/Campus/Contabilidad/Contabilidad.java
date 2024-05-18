@@ -14,6 +14,11 @@ public class Contabilidad {
 
     public static int ingresosHospital = 0;
 
+    /**
+     * Muestra el menú de opciones para la gestión de contabilidad del hospital.
+     * Permite al usuario seleccionar entre pagar las nóminas del personal sanitario,
+     * revisar las ganancias del hospital o volver al menú principal.
+     */
     public static void menuContabilidad(){
         Scanner input = new Scanner(System.in);
         int opcion;
@@ -49,10 +54,16 @@ public class Contabilidad {
         } while (opcion != 0);
     }
 
+    /**
+     * Muestra las ganancias actuales del hospital.
+     */
     private static void gananciasHospital() {
         System.out.println("El hospital tiene actualmente unas ganancias de: " + ingresosHospital + "€");
     }
 
+    /**
+     * Calcula y muestra el detalle de las nóminas del personal sanitario y el costo total.
+     */
     public static void pagarNominasPersonalSanitario(){
         int costoTotal = 0;
         System.out.println("=======================================");
@@ -69,4 +80,5 @@ public class Contabilidad {
         System.out.println("=======================================");
 
     }
+
 }
